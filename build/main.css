@@ -27972,6 +27972,141 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+.item-select-searchable:not(.item-select-searchable-is-enabled) {
+  pointer-events: none;
+}
+
+.item-select-searchable .label {
+  margin-right: 0;
+}
+
+.select-searchable {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.select-searchable-label {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.select-searchable-value {
+  max-width: 45%;
+}
+
+.select-searchable-value-item {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.select-searchable-value-item:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.select-searchable-icon {
+  position: relative;
+  width: 20px;
+}
+
+.select-searchable-icon-inner {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  border-top: 5px solid;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  pointer-events: none;
+  margin-top: -3px;
+}
+
+.select-searchable-ios .select-searchable-icon {
+  height: 18px;
+}
+
+.select-searchable-ios .select-searchable-icon-inner {
+  margin-top: -2px;
+  color: #999;
+}
+
+.select-searchable-ios .select-searchable-value {
+  padding-left: 16px;
+}
+
+.select-searchable-md .select-searchable-icon {
+  height: 19px;
+}
+
+.select-searchable-md .select-searchable-icon-inner {
+  color: #999;
+}
+
+.select-searchable-md .select-searchable-value {
+  padding-left: 16px;
+}
+
+.select-searchable-md .select-searchable-label {
+  color: #999;
+}
+
+.select-searchable:not(.select-searchable-is-enabled) .select-searchable-value {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.select-searchable-spinner {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.select-searchable-spinner-background {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.05;
+}
+
+.select-searchable-spinner ion-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  margin-top: -14px;
+  margin-left: -14px;
+}
+
+.select-searchable-page-ios .select-searchable-page-message {
+  padding: 8px;
+}
+
+.select-searchable-page-md .select-searchable-page-message {
+  padding: 8px 12px;
+}
+
+.select-searchable-page.select-searchable-page-can-reset.select-searchable-page-is-multiple .footer .col:first-child {
+  padding-right: 8px;
+}
+
+.select-searchable-page.select-searchable-page-can-reset.select-searchable-page-is-multiple .footer .col:last-child {
+  padding-left: 8px;
+}
+
+.select-searchable-page.select-searchable-page-is-searching .scroll-content {
+  overflow-y: hidden;
+}
+
 .item-bg-color {
   background-color: #F9FAFB;
 }
@@ -27979,6 +28114,32 @@ ion-navbar.toolbar {
 page-about-us .page-title {
   font-size: 32px;
   font-weight: 700;
+}
+
+page-about-us .comp-logo-img {
+  min-height: auto;
+  height: 100%;
+  contain: none;
+}
+
+page-about-us .font-wt-500 {
+  font-weight: 500;
+}
+
+page-about-us .font-wt-700 {
+  font-weight: 700;
+}
+
+page-about-us .exit-btn {
+  width: 120px;
+}
+
+page-about-us .para-lbl {
+  padding: 5px 10px;
+}
+
+page-confirmation-modal .close-btn {
+  font-size: 25px;
 }
 
 page-home {
@@ -28089,4 +28250,177 @@ page-sign-out .font-wt-200 {
 page-sign-out .img-prev {
   contain: none;
   float: right;
+}
+
+page-sign-out .sign-out-img {
+  min-height: 100%;
+  height: 100%;
+  contain: none;
+  float: right;
+}
+
+page-sign-out .item-select-searchable:not(.item-select-searchable-is-enabled) {
+  pointer-events: none;
+}
+
+page-sign-out .item-select-searchable .label {
+  margin-right: 0;
+}
+
+page-sign-out .select-searchable {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+page-sign-out .select-searchable-label {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+page-sign-out .select-searchable-value {
+  max-width: 45%;
+}
+
+page-sign-out .select-searchable-value-item {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+page-sign-out .select-searchable-value-item:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+page-sign-out .select-searchable-icon {
+  position: relative;
+  width: 20px;
+}
+
+page-sign-out .select-searchable-icon-inner {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  border-top: 5px solid;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  pointer-events: none;
+  margin-top: -3px;
+}
+
+page-sign-out .select-searchable-ios .select-searchable-icon {
+  height: 18px;
+}
+
+page-sign-out .select-searchable-ios .select-searchable-icon-inner {
+  margin-top: -2px;
+  color: #999;
+}
+
+page-sign-out .select-searchable-ios .select-searchable-value {
+  padding-left: 16px;
+}
+
+page-sign-out .select-searchable-md .select-searchable-icon {
+  height: 19px;
+}
+
+page-sign-out .select-searchable-md .select-searchable-icon-inner {
+  color: #999;
+}
+
+page-sign-out .select-searchable-md .select-searchable-value {
+  padding-left: 16px;
+}
+
+page-sign-out .select-searchable-md .select-searchable-label {
+  color: #999;
+}
+
+page-sign-out .select-searchable:not(.select-searchable-is-enabled) .select-searchable-value {
+  opacity: 0.4;
+  cursor: default;
+}
+
+page-sign-out .select-searchable-spinner {
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+page-sign-out .select-searchable-spinner-background {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.05;
+}
+
+page-sign-out .select-searchable-spinner ion-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  margin-top: -14px;
+  margin-left: -14px;
+}
+
+page-sign-out .select-searchable-page-ios .select-searchable-page-message {
+  padding: 8px;
+}
+
+page-sign-out .select-searchable-page-md .select-searchable-page-message {
+  padding: 8px 12px;
+}
+
+page-sign-out .select-searchable-page.select-searchable-page-can-reset.select-searchable-page-is-multiple .footer .col:first-child {
+  padding-right: 8px;
+}
+
+page-sign-out .select-searchable-page.select-searchable-page-can-reset.select-searchable-page-is-multiple .footer .col:last-child {
+  padding-left: 8px;
+}
+
+page-sign-out .select-searchable-page.select-searchable-page-is-searching .scroll-content {
+  overflow-y: hidden;
+}
+
+page-terms-and-conditions .custom-btn {
+  width: 120px;
+}
+
+page-terms-and-conditions .digital-signature {
+  padding-left: 400px;
+  padding-right: 400px;
+}
+
+page-terms-and-conditions .signature-textarea {
+  border: 1px solid black;
+  border-color: #bababa !important;
+  border-radius: 5px;
+  height: 20vh;
+}
+
+page-visitor-pass-modal .comp-logo-img {
+  min-height: auto;
+  height: 95%;
+  width: 90%;
+  contain: none;
+}
+
+page-visitor-pass-modal .close-btn {
+  font-size: 25px;
+}
+
+page-visitor-pass-modal .pass-font {
+  font-size: 18px;
 }
