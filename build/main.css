@@ -28195,6 +28195,12 @@ page-home .about-us-card-bg {
   background-color: #58b9ff;
 }
 
+page-home .comp-logo-img {
+  height: "50%";
+  contain: none;
+  width: "50%";
+}
+
 page-sign-in .sign-in-header {
   font-size: 18px;
 }
