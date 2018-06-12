@@ -28604,6 +28604,11 @@ page-terms-and-conditions signature-pad canvas {
   height: 200px;
 }
 
+page-terms-and-conditions .req-lbl {
+  color: #FF0000;
+  font-size: 11px;
+}
+
 page-visitor-pass-modal .comp-logo-img {
   min-height: auto;
   height: 95%;
