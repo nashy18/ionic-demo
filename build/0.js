@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 692:
+/***/ 693:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VisitorPassModalPageModule", function() { return VisitorPassModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__visitor_pass_modal__ = __webpack_require__(694);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__visitor_pass_modal__ = __webpack_require__(695);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var VisitorPassModalPageModule = /** @class */ (function () {
+var VisitorPassModalPageModule = (function () {
     function VisitorPassModalPageModule() {
     }
     VisitorPassModalPageModule = __decorate([
@@ -38,14 +38,14 @@ var VisitorPassModalPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 694:
+/***/ 695:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VisitorPassModalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(88);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -66,7 +66,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var VisitorPassModalPage = /** @class */ (function () {
+var VisitorPassModalPage = (function () {
     function VisitorPassModalPage(navCtrl, navParams, viewCtrl, alertCtrl, storage) {
         //this.GMPType = this.navParams.get('GMPType');
         this.navCtrl = navCtrl;
@@ -121,7 +121,7 @@ var VisitorPassModalPage = /** @class */ (function () {
     };
     VisitorPassModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-visitor-pass-modal',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\visitor-pass-modal\visitor-pass-modal.html"*/'<!--\n  Generated template for the VisitorPassModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title text-center text-wrap>Visitor Pass</ion-title>\n    <ion-buttons end>\n      <button class="close-btn" ion-button (click)="closeModal()"><ion-icon name="close-circle"></ion-icon></button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col col-lg-2 col-md-2 col-sm-4 col-xs-4 text-left>\n        <img class="comp-logo-img" src="assets/imgs/natures-logo-header.PNG" />\n      </ion-col>\n      <ion-col col-lg-10 col-md-10 col-sm-8 col-xs-8 text-left>\n        <ion-label><h1>Natures Touch</h1></ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-lg-3 col-md-3 col-sm-4 col-xs-6>\n        <ion-label class="pass-font" text-wrap>Name</ion-label>\n      </ion-col>\n      <ion-col col-lg-9 col-md-9 col-sm-8 col-xs-6>\n        <ion-label class="pass-font" text-wrap>: {{name}}</ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-lg-3 col-md-3 col-sm-4 col-xs-6>\n        <ion-label class="pass-font" text-wrap>Company</ion-label>\n      </ion-col>\n      <ion-col col-lg-9 col-md-9 col-sm-8 col-xs-6>\n        <ion-label class="pass-font" text-wrap>: {{company}}</ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-lg-3 col-md-3 col-sm-4 col-xs-6>\n        <ion-label class="pass-font" text-wrap>GMP Area Access</ion-label>\n      </ion-col>\n      <ion-col col-lg-9 col-md-9 col-sm-8 col-xs-6>\n        <ion-label class="pass-font" text-wrap>: {{GMPType}}</ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-lg-3 col-md-3 col-sm-4 col-xs-6>\n        <ion-label class="pass-font" text-wrap>Sign in Date and Time</ion-label>\n      </ion-col>\n      <ion-col col-lg-9 col-md-9 col-sm-8 col-xs-6>\n        <ion-label class="pass-font" text-wrap>: {{signInDateTime | date : "EEEE, MMMM d, y"}}</ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n        <button ion-button class="custom-btn" color="danger" (click)="cancelPrint();" outline round>Cancel</button>\n        <button ion-button class="custom-btn" color="secondary" (click)="printVisitorPass();" outline round>Print</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\visitor-pass-modal\visitor-pass-modal.html"*/,
+            selector: 'page-visitor-pass-modal',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\visitor-pass-modal\visitor-pass-modal.html"*/'<!--\n\n  Generated template for the VisitorPassModalPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center text-wrap>Visitor Pass</ion-title>\n\n    <ion-buttons end>\n\n      <button class="close-btn" ion-button (click)="closeModal()"><ion-icon name="close-circle"></ion-icon></button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <ion-grid fixed>\n\n    <ion-row>\n\n      <ion-col col-3 text-left>\n\n        <img class="visitor-pass-logo" src="assets/imgs/natures-logo-header.PNG" />\n\n      </ion-col>\n\n      <ion-col col-9 text-left>\n\n        <ion-label text-wrap class="visitor-pass-header"><h1>Natures Touch</h1></ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-card style="margin-top: 25px;">\n\n      <ion-card-content>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <div class="visitor-pass-content" text-wrap>Name</div>\n\n          </ion-col>\n\n          <ion-col col-8>\n\n            <div class="visitor-pass-content" text-wrap>: {{name}}</div>\n\n          </ion-col>\n\n          <!-- <ion-col col-12>\n\n            <div class="visitor-pass-content" text-wrap>Name: </div>\n\n            <div class="visitor-pass-content" text-wrap>{{name}}</div>\n\n          </ion-col> -->\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <div class="visitor-pass-content" text-wrap>Company</div>\n\n          </ion-col>\n\n          <ion-col col-8>\n\n            <div class="visitor-pass-content" text-wrap>: {{company}}</div>\n\n          </ion-col>\n\n          <!-- <ion-col col-12>\n\n            <div class="visitor-pass-content" text-wrap>Company: </div>\n\n            <div class="visitor-pass-content" text-wrap>{{company}}</div>\n\n          </ion-col> -->\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <div class="visitor-pass-content" text-wrap>GMP Area Access</div>\n\n          </ion-col>\n\n          <ion-col col-8>\n\n            <div class="visitor-pass-content" text-wrap>: {{GMPType}}</div>\n\n          </ion-col>\n\n          <!-- <ion-col col-12>\n\n            <div class="visitor-pass-content" text-wrap>GMP Area Access: </div>\n\n            <div class="visitor-pass-content" text-wrap>{{GMPType}}</div>\n\n          </ion-col> -->\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <div class="visitor-pass-content" text-wrap>Date and Time: </div>\n\n          </ion-col>\n\n          <ion-col col-8>\n\n            <div class="visitor-pass-content" text-wrap>: {{signInDateTime | date : "EEEE, MMMM d, y HH:mm:ss"}}</div>\n\n          </ion-col>\n\n          <!-- <ion-col col-12>\n\n            <div class="visitor-pass-content" text-wrap>Sign in Date and Time: </div>\n\n            <div class="visitor-pass-content" text-wrap>{{signInDateTime | date : "EEEE, MMMM d, y HH:mm:ss"}}</div>\n\n          </ion-col> -->\n\n        </ion-row>\n\n      </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-row>\n\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n        <button ion-button class="custom-btn" color="danger" (click)="cancelPrint();" outline round>Cancel</button>\n\n        <button ion-button class="custom-btn" color="secondary" (click)="printVisitorPass();" outline round>Print</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\visitor-pass-modal\visitor-pass-modal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ViewController"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["AlertController"], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])

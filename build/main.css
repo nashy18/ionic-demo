@@ -28111,6 +28111,74 @@ ion-navbar.toolbar {
   background-color: #edeef2;
 }
 
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  .visitor-pass-header {
+    font-size: 14px;
+  }
+  .visitor-pass-logo {
+    height: 80%;
+    width: 85%;
+  }
+  .visitor-pass-content {
+    font-size: 14px;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  .visitor-pass-header {
+    font-size: 14px;
+  }
+  .visitor-pass-logo {
+    height: 65%;
+    width: 85%;
+  }
+  .visitor-pass-content {
+    font-size: 14px;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  .visitor-pass-logo {
+    height: 65%;
+    width: 80%;
+  }
+  .visitor-pass-content {
+    font-size: 14px;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  .visitor-pass-logo {
+    height: 65%;
+    width: 80%;
+  }
+  .visitor-pass-content {
+    font-size: 14px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  .visitor-pass-logo {
+    height: 65%;
+    width: 85%;
+  }
+  .visitor-pass-content {
+    font-size: 14px;
+  }
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+/* Large Devices, Wide Screens */
+/* Medium Devices, Desktops */
+/* Small Devices, Tablets */
+/* Extra Small Devices, Phones */
+/* Custom, iPhone Retina */
 page-about-us .page-title {
   font-size: 32px;
   font-weight: 700;
@@ -28270,6 +28338,7 @@ page-home .video-container {
   padding-top: 30px;
   height: 0;
   overflow: hidden;
+  border: 2px solid;
 }
 
 page-home .video-container iframe, page-home .video-container object, page-home .video-container embed {
@@ -28338,11 +28407,22 @@ page-sign-in .text-input {
   margin: 0px;
   padding: 0px;
   font-size: 14px;
+  border: none;
 }
 
 page-sign-in .tooltip {
   position: relative;
   display: inline-block;
+}
+
+page-sign-in .tooltip-img {
+  width: 20px;
+  height: 20px;
+}
+
+page-sign-in .tooltip-btn {
+  background-color: transparent;
+  margin: 0px;
 }
 
 page-sign-in .tooltip .tooltiptext {
@@ -28398,8 +28478,9 @@ page-sign-in .req-lbl {
   font-size: 11px;
 }
 
-page-sign-in .select-option {
+page-sign-in .select-option .select-searchable-value {
   font-size: 13px;
+  max-width: 100%;
 }
 
 page-sign-in .astrik {
