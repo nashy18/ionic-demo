@@ -28124,6 +28124,12 @@ ion-navbar.toolbar {
   .visitor-pass-content {
     font-size: 14px;
   }
+  .sign-out-img-div {
+    display: none;
+  }
+  .sign-in-bar-code-txt-align {
+    text-align: center;
+  }
 }
 
 /* Extra Small Devices, Phones */
@@ -28138,6 +28144,12 @@ ion-navbar.toolbar {
   .visitor-pass-content {
     font-size: 14px;
   }
+  .sign-out-img-div {
+    display: none;
+  }
+  .sign-in-bar-code-txt-align {
+    text-align: center;
+  }
 }
 
 /* Small Devices, Tablets */
@@ -28148,6 +28160,12 @@ ion-navbar.toolbar {
   }
   .visitor-pass-content {
     font-size: 14px;
+  }
+  .sign-out-img-div {
+    display: none;
+  }
+  .sign-in-bar-code-txt-align {
+    text-align: center;
   }
 }
 
@@ -28160,6 +28178,12 @@ ion-navbar.toolbar {
   .visitor-pass-content {
     font-size: 14px;
   }
+  .sign-out-img-div {
+    display: block;
+  }
+  .sign-in-bar-code-txt-align {
+    text-align: left;
+  }
 }
 
 /* Large Devices, Wide Screens */
@@ -28170,6 +28194,12 @@ ion-navbar.toolbar {
   }
   .visitor-pass-content {
     font-size: 14px;
+  }
+  .sign-out-img-div {
+    display: block;
+  }
+  .sign-in-bar-code-txt-align {
+    text-align: left;
   }
 }
 
@@ -28661,18 +28691,6 @@ page-sign-out .select-searchable-page.select-searchable-page-can-reset.select-se
 
 page-sign-out .select-searchable-page.select-searchable-page-is-searching .scroll-content {
   overflow-y: hidden;
-}
-
-@media screen and (max-width: 1200px) {
-  page-sign-out .sign-out-img {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  page-sign-out .sign-out-img {
-    display: block;
-  }
 }
 
 page-terms-and-conditions .custom-btn {
