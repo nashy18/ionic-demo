@@ -1,6 +1,6 @@
-webpackJsonp([4],{
+webpackJsonp([5],{
 
-/***/ 156:
+/***/ 157:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,13 +8,13 @@ webpackJsonp([4],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__(381);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__terms_and_conditions_terms_and_conditions__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_http_service_http_service__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_config_contsants__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__terms_and_conditions_terms_and_conditions__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_http_service_http_service__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -73,8 +73,8 @@ var SignInPage = (function () {
             controlledArea: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
         });
         this.visitingAreaList = [
-            { id: 101, name: 'Yes' },
-            { id: 102, name: 'No' }
+            { id: 102, name: 'No' },
+            { id: 101, name: 'Yes' }
         ];
     }
     SignInPage.prototype.resetForm = function () {
@@ -138,7 +138,7 @@ var SignInPage = (function () {
         try {
             this.httpServiceProvider.get(request).subscribe(function (response) {
                 console.log(response.data);
-                _this.nameOfDepartmentList = response.data;
+                _this.nameOfDepartmentList = _this.getListByOrderASC(response.data);
                 loading.dismissAll();
             }, function (err) {
                 console.log(err);
@@ -159,7 +159,7 @@ var SignInPage = (function () {
         try {
             this.httpServiceProvider.get(requestData).subscribe(function (response) {
                 console.log(response.data);
-                _this.purposeVisitedList = response.data;
+                _this.purposeVisitedList = _this.getListByOrderASC(response.data);
                 //loading.dismissAll();
             }, function (err) {
                 console.log(err);
@@ -193,7 +193,8 @@ var SignInPage = (function () {
                             list[i]["fullName"] = list[i].firstName + ' ' + list[i].lastName;
                         }
                     }
-                    _this.nameOfPersonList = list;
+                    _this.nameOfPersonList = _this.getPersonListByOrderASC(list);
+                    ;
                     loading_2.dismissAll();
                 }, function (err) {
                     console.log(err);
@@ -206,9 +207,43 @@ var SignInPage = (function () {
             }
         }
     };
+    SignInPage.prototype.getListByOrderASC = function (list) {
+        if (list == undefined || list == null) {
+            return list;
+        }
+        return list.sort(function (a, b) {
+            var nameA = a.name.toUpperCase();
+            var nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            // names must be equal
+            return 0;
+        });
+    };
+    SignInPage.prototype.getPersonListByOrderASC = function (list) {
+        if (list == undefined || list == null) {
+            return list;
+        }
+        return list.sort(function (a, b) {
+            var nameA = a.fullName.toUpperCase();
+            var nameB = b.fullName.toUpperCase();
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            // names must be equal
+            return 0;
+        });
+    };
     SignInPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-sign-in',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-in\sign-in.html"*/'<!--\n\n  Generated template for the SignInPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Visitor Sign In</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-5 col-md-5 col-sm-12 col-xs-12>\n\n        <img class="sign-in-img" width="100%" height="auto" src="assets/imgs/sign-in.png" />\n\n      </ion-col>\n\n      <ion-col col-12 col-lg-7 col-md-7 col-sm-12 col-xs-12 padding-horizontal>\n\n        <div class="sign-in-bg-color">\n\n          <form [formGroup]="signInForm" >\n\n            <ion-row>\n\n             <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n               <ion-label text-wrap text-center class="page-title">We make your visit clutter free.</ion-label>\n\n               <!-- <ion-label text-wrap text-justify>Food safety Food Safety 1.svg Terms Foodborne illness Hazard analysis and critical control points (HACCP)</ion-label>\n\n               <ion-label text-wrap text-justify>• Hazard analysis and risk-based preventive controls (HARPC) Critical control point Critical factors FAT TOM pH Water activity (aw) Bacterial pathogens Clostridium botulinum Escherichia coli Listeria Salmonella Vibrio cholerae Cronobacter spp Viral pathogens Enterovirus Hepatitis A Norovirus Rotavirus Parasitic pathogens Cryptosporidium Entamoeba histolytica Giardia Trichinella v t e Food safety is a scientific discipline describing handling, preparation, and storage of food in ways that prevent food-borne illness.</ion-label>\n\n               <ion-label text-wrap text-justify>The occurrence of two or more cases of a similar illnesses resulting from the ingestion of a common food is known as a food-borne disease outbreak.</ion-label>\n\n               <ion-label text-wrap text-justify>[1] This includes a number of routines that should be followed to avoid potential health hazards.</ion-label> -->\n\n             </ion-col>\n\n           </ion-row>\n\n           <!-- <ion-row>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ion-label class="form-title">\n\n                Sign in\n\n              </ion-label>\n\n            </ion-col>\n\n           </ion-row> -->\n\n           <ion-row>&nbsp;</ion-row>\n\n           <ion-row>\n\n             <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>\n\n               <ion-label class="label_name" text-wrap>Scan business card here or enter below </ion-label>\n\n             </ion-col>                \n\n             <ion-col class="sign-in-bar-code-txt-align" col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-top>\n\n               <ion-img width="100" height="25" src="assets/imgs/bar_code.png"></ion-img>\n\n             </ion-col>\n\n           </ion-row>            \n\n           <ion-row>\n\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n              <ion-label class="label_name">First Name<span class="astrik"> * </span></ion-label>  \n\n                <ion-item>\n\n                  <ion-input type="text" [(ngModel)]="data.firstName" formControlName="firstName" [class.invalid]="!signInForm.controls.firstName.valid && \n\n                   (signInForm.controls.firstName.dirty)"></ion-input>\n\n                  <button class="tooltip tooltip-btn" clear item-right>\n\n                    <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                     <span class="tooltiptext">Enter first name</span>\n\n                  </button>\n\n                </ion-item> \n\n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'required\') && (signInForm.controls.firstName.touched); then fnReq"></ng-container>\n\n                <ng-template #fnReq>\n\n                  <div class="req-lbl">* First Name is required!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'minlength\') && (signInForm.controls.firstName.touched); then fnMinReq"></ng-container>\n\n                <ng-template #fnMinReq>\n\n                  <div class="req-lbl">* Minimum length is 2!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="!signInForm.controls.firstName.hasError(\'required\') && !signInForm.controls.firstName.hasError(\'minlength\') && !signInForm.controls.firstName.valid && (signInForm.controls.firstName.touched); then fnInvalidName"></ng-container>\n\n                <ng-template #fnInvalidName>\n\n                  <div class="req-lbl">* Invalid name!</div>\n\n                </ng-template>\n\n            </ion-col>\n\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n              <ion-label class="label_name">Last Name<span class="astrik"> * </span></ion-label>  \n\n                <ion-item>\n\n                  <ion-input type="text" [(ngModel)]="data.lastName" formControlName="lastName" [class.invalid]="!signInForm.controls.lastName.valid && \n\n                   (signInForm.controls.lastName.dirty)"></ion-input>\n\n                    <button class="tooltip tooltip-btn" clear item-right >\n\n                     <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                     <span class="tooltiptext">Enter last name</span>\n\n                    </button>\n\n                </ion-item> \n\n                <!-- <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'required\')  &&\n\n                  (signInForm.controls.lastName.touched )">* Last Name is required!</div>  \n\n                <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'minlength\')  &&\n\n                  (signInForm.controls.lastName.touched )">* Minimum last name length is 2!</div>  -->\n\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'required\') && (signInForm.controls.lastName.touched); then lnReq"></ng-container>\n\n                <ng-template #lnReq>\n\n                  <div class="req-lbl">* Last Name is required!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'minlength\') && (signInForm.controls.lastName.touched); then lnMinReq"></ng-container>\n\n                <ng-template #lnMinReq>\n\n                  <div class="req-lbl">* Minimum length is 2!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="!signInForm.controls.lastName.hasError(\'required\') && !signInForm.controls.lastName.hasError(\'minlength\') && !signInForm.controls.lastName.valid && (signInForm.controls.lastName.touched); then lnInvalidName"></ng-container>\n\n                <ng-template #lnInvalidName>\n\n                  <div class="req-lbl">* Invalid name!</div>\n\n                </ng-template>                 \n\n             </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                <ion-label class="label_name">Phone<span class="astrik"> * </span></ion-label>  \n\n                  <ion-item>\n\n                    <ion-input type="tel" [(ngModel)]="data.phone" formControlName="phone" [class.invalid]="!signInForm.controls.phone.valid && \n\n                      (signInForm.controls.phone.dirty)"></ion-input>\n\n                      <button class="tooltip tooltip-btn" clear item-right >\n\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                       <span class="tooltiptext">Enter your contact</span>\n\n                      </button>\n\n                  </ion-item> \n\n                  <!-- <div class="req-lbl" *ngIf="!signInForm.controls.phone.valid && \n\n                    (signInForm.controls.phone.touched )">* Phone is required (10 digit)!</div>      -->\n\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'minlength\') && (signInForm.controls.phone.touched); then mobMinReq"></ng-container>\n\n                    <ng-template #mobMinReq>\n\n                      <div class="req-lbl">* Minimum 10 digits requird!</div>\n\n                    </ng-template>\n\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'maxlength\') && (signInForm.controls.phone.touched); then mobMaxReq"></ng-container>\n\n                    <ng-template #mobMaxReq>\n\n                      <div class="req-lbl">* Maximum 15 digits allowed!</div>\n\n                    </ng-template>\n\n                    <ng-container *ngIf="!signInForm.controls.phone.hasError(\'required\') && !signInForm.controls.phone.hasError(\'minlength\') && !signInForm.controls.phone.valid && (signInForm.controls.phone.touched); then mobInvalidName"></ng-container>\n\n                    <ng-template #mobInvalidName>\n\n                      <div class="req-lbl">* Invalid phone!</div>\n\n                    </ng-template>        \n\n              </ion-col>\n\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                <ion-label class="label_name">Email<span class="astrik"> * </span></ion-label>  \n\n                  <ion-item>\n\n                    <ion-input type="text" [(ngModel)]="data.email" formControlName="email" [class.invalid]="!signInForm.controls.email.valid && \n\n                      (signInForm.controls.email.dirty)"></ion-input>\n\n                      <button class="tooltip tooltip-btn" clear item-right >\n\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                       <span class="tooltiptext">Enter email</span>\n\n                      </button>\n\n                  </ion-item> \n\n                  <div class="req-lbl" *ngIf="!signInForm.controls.email.valid  &&\n\n                    (signInForm.controls.email.touched )">* Email is required!</div>                \n\n               </ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n               <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>    \n\n                 <ion-label class="label_name">Company<span class="astrik"> * </span></ion-label>  \n\n                   <ion-item>\n\n                    <ion-input type="text" [(ngModel)]="data.company" formControlName="company" [class.invalid]="!signInForm.controls.company.valid && \n\n                     (signInForm.controls.company.dirty)"></ion-input>\n\n                     <button class="tooltip tooltip-btn" clear item-right >\n\n                      <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                      <span class="tooltiptext">Enter company name</span>\n\n                     </button>\n\n                   </ion-item> \n\n                   <div class="req-lbl" *ngIf="!signInForm.controls.company.valid  &&\n\n                    (signInForm.controls.company.touched )">* Company is required!</div>                \n\n                </ion-col>                  \n\n                </ion-row>\n\n                <ion-row>\n\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                    <ion-label class="label_name" text-wrap>Department of the person to be visited<span class="astrik"> * </span></ion-label>  \n\n                      <ion-item>                          \n\n                        <select-searchable class="select-option" formControlName="department" [(ngModel)]="data.department" [items]="nameOfDepartmentList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'department\')"> \n\n                        </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                          <span class="tooltiptext">Select department name</span>\n\n                        </button>\n\n                      </ion-item> \n\n                      <div class="req-lbl" *ngIf="!signInForm.controls.department.valid  &&\n\n                       (signInForm.controls.department.dirty )">* Department is required!</div>                \n\n                  </ion-col>\n\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                    <ion-label class="label_name" text-wrap>Name of the person to be visiting<span class="astrik"> * </span></ion-label>  \n\n                      <ion-item>                              \n\n                        <select-searchable class="select-option" formControlName="nameOfPerson" [(ngModel)]="data.nameOfPerson" [items]="nameOfPersonList" itemValueField="id" itemTextField="fullName" [canSearch]="true" (onChange)="userSelectChange($event, \'emplyee\')"> \n\n                        </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                          <span class="tooltiptext">Select person name</span>\n\n                        </button>\n\n                      </ion-item> \n\n                      <div class="req-lbl" *ngIf="!signInForm.controls.nameOfPerson.valid  &&\n\n                        (signInForm.controls.nameOfPerson.dirty )">* Name of person is required!</div>                \n\n                   </ion-col>\n\n                  </ion-row> \n\n                  <ion-row>\n\n                    <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                      <ion-label class="label_name">Purpose of visit<span class="astrik"> * </span></ion-label>  \n\n                        <ion-item>\n\n                          <select-searchable class="select-option" formControlName="purpose" [(ngModel)]="data.purpose" [items]="purposeVisitedList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'purpose\')"> \n\n                          </select-searchable>\n\n                          <button class="tooltip tooltip-btn" clear item-right >\n\n                           <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                           <span class="tooltiptext">Select purpose for visiting</span>\n\n                          </button>\n\n                       </ion-item> \n\n                       <div class="req-lbl" *ngIf="!signInForm.controls.purpose.valid  &&\n\n                        (signInForm.controls.purpose.dirty )">* Purpose is required!</div>                \n\n                    </ion-col>\n\n                    <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>    \n\n                      <ion-label class="label_name" text-wrap>Are you visiting GMP controlled area?<span class="astrik"> * </span></ion-label>  \n\n                        <ion-item>\n\n                          <select-searchable class="select-option" formControlName="controlledArea" [(ngModel)]="data.controlledArea" [items]="visitingAreaList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'controlledArea\')"> \n\n                          </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                         <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                         <span class="tooltiptext">select option for GMP</span>\n\n                        </button>\n\n                       </ion-item> \n\n                       <div class="req-lbl" *ngIf="!signInForm.controls.controlledArea.valid  &&\n\n                        (signInForm.controls.controlledArea.dirty )">* GMP is required!</div>                \n\n                     </ion-col>\n\n                   </ion-row> \n\n                   <ion-row>\n\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n                        <p *ngIf="submitAttempt && !signInForm.valid" class="req-lbl" text-wrap>(*) Please fill all mandatory details.</p>\n\n                      </ion-col>\n\n                   </ion-row>\n\n                   <ion-row>\n\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n                        <button ion-button color="danger" outline round (click)="resetForm();">Reset</button>\n\n                        <button ion-button color="secondary" (click)="onSubmit(signInForm.value);" type="submit" outline round>Submit</button>\n\n                     </ion-col>\n\n                   </ion-row>\n\n            </form>\n\n          </div>          \n\n        </ion-col>\n\n      </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-in\sign-in.html"*/,
+            selector: 'page-sign-in',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-in\sign-in.html"*/'<!--\n\n  Generated template for the SignInPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Visitor Sign In</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-5 col-md-5 col-sm-12 col-xs-12>\n\n        <img class="sign-in-img" width="100%" height="auto" src="assets/imgs/sign-in.png" />\n\n      </ion-col>\n\n      <ion-col col-12 col-lg-7 col-md-7 col-sm-12 col-xs-12 padding-horizontal>\n\n        <div class="sign-in-bg-color">\n\n          <form [formGroup]="signInForm" >\n\n            <ion-row>\n\n             <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n               <ion-label text-wrap text-center class="page-title">We make your visit clutter free.</ion-label>\n\n               <!-- <ion-label text-wrap text-justify>Food safety Food Safety 1.svg Terms Foodborne illness Hazard analysis and critical control points (HACCP)</ion-label>\n\n               <ion-label text-wrap text-justify>• Hazard analysis and risk-based preventive controls (HARPC) Critical control point Critical factors FAT TOM pH Water activity (aw) Bacterial pathogens Clostridium botulinum Escherichia coli Listeria Salmonella Vibrio cholerae Cronobacter spp Viral pathogens Enterovirus Hepatitis A Norovirus Rotavirus Parasitic pathogens Cryptosporidium Entamoeba histolytica Giardia Trichinella v t e Food safety is a scientific discipline describing handling, preparation, and storage of food in ways that prevent food-borne illness.</ion-label>\n\n               <ion-label text-wrap text-justify>The occurrence of two or more cases of a similar illnesses resulting from the ingestion of a common food is known as a food-borne disease outbreak.</ion-label>\n\n               <ion-label text-wrap text-justify>[1] This includes a number of routines that should be followed to avoid potential health hazards.</ion-label> -->\n\n             </ion-col>\n\n           </ion-row>\n\n           <!-- <ion-row>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ion-label class="form-title">\n\n                Sign in\n\n              </ion-label>\n\n            </ion-col>\n\n           </ion-row> -->\n\n           <ion-row>&nbsp;</ion-row>\n\n           <ion-row>\n\n             <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>\n\n               <ion-label class="label_name" text-wrap>Scan business card here or enter below </ion-label>\n\n             </ion-col>                \n\n             <ion-col class="sign-in-bar-code-txt-align" col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-top>\n\n               <ion-img width="100" height="25" src="assets/imgs/bar_code.png"></ion-img>\n\n             </ion-col>\n\n           </ion-row>            \n\n           <ion-row>\n\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n              <ion-label class="label_name">First Name<span class="astrik"> * </span></ion-label>  \n\n                <ion-item>\n\n                  <ion-input type="text" [(ngModel)]="data.firstName" formControlName="firstName" [class.invalid]="!signInForm.controls.firstName.valid && \n\n                   (signInForm.controls.firstName.dirty)"></ion-input>\n\n                  <button class="tooltip tooltip-btn" clear item-right>\n\n                    <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                     <span class="tooltiptext">Enter first name</span>\n\n                  </button>\n\n                </ion-item> \n\n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'required\') && (signInForm.controls.firstName.touched); then fnReq"></ng-container>\n\n                <ng-template #fnReq>\n\n                  <div class="req-lbl">* First Name is required!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'minlength\') && (signInForm.controls.firstName.touched); then fnMinReq"></ng-container>\n\n                <ng-template #fnMinReq>\n\n                  <div class="req-lbl">* Minimum length is 2!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="!signInForm.controls.firstName.hasError(\'required\') && !signInForm.controls.firstName.hasError(\'minlength\') && !signInForm.controls.firstName.valid && (signInForm.controls.firstName.touched); then fnInvalidName"></ng-container>\n\n                <ng-template #fnInvalidName>\n\n                  <div class="req-lbl">* Invalid name!</div>\n\n                </ng-template>\n\n            </ion-col>\n\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n              <ion-label class="label_name">Last Name<span class="astrik"> * </span></ion-label>  \n\n                <ion-item>\n\n                  <ion-input type="text" [(ngModel)]="data.lastName" formControlName="lastName" [class.invalid]="!signInForm.controls.lastName.valid && \n\n                   (signInForm.controls.lastName.dirty)"></ion-input>\n\n                    <button class="tooltip tooltip-btn" clear item-right >\n\n                     <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                     <span class="tooltiptext">Enter last name</span>\n\n                    </button>\n\n                </ion-item> \n\n                <!-- <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'required\')  &&\n\n                  (signInForm.controls.lastName.touched )">* Last Name is required!</div>  \n\n                <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'minlength\')  &&\n\n                  (signInForm.controls.lastName.touched )">* Minimum last name length is 2!</div>  -->\n\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'required\') && (signInForm.controls.lastName.touched); then lnReq"></ng-container>\n\n                <ng-template #lnReq>\n\n                  <div class="req-lbl">* Last Name is required!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'minlength\') && (signInForm.controls.lastName.touched); then lnMinReq"></ng-container>\n\n                <ng-template #lnMinReq>\n\n                  <div class="req-lbl">* Minimum length is 2!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="!signInForm.controls.lastName.hasError(\'required\') && !signInForm.controls.lastName.hasError(\'minlength\') && !signInForm.controls.lastName.valid && (signInForm.controls.lastName.touched); then lnInvalidName"></ng-container>\n\n                <ng-template #lnInvalidName>\n\n                  <div class="req-lbl">* Invalid name!</div>\n\n                </ng-template>                 \n\n             </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                <ion-label class="label_name">Phone<span class="astrik"> * </span></ion-label>  \n\n                  <ion-item>\n\n                    <ion-input type="tel" [(ngModel)]="data.phone" formControlName="phone" [class.invalid]="!signInForm.controls.phone.valid && \n\n                      (signInForm.controls.phone.dirty)"></ion-input>\n\n                      <button class="tooltip tooltip-btn" clear item-right >\n\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                       <span class="tooltiptext">Enter your contact</span>\n\n                      </button>\n\n                  </ion-item> \n\n                  <!-- <div class="req-lbl" *ngIf="!signInForm.controls.phone.valid && \n\n                    (signInForm.controls.phone.touched )">* Phone is required (10 digit)!</div>      -->\n\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'minlength\') && (signInForm.controls.phone.touched); then mobMinReq"></ng-container>\n\n                    <ng-template #mobMinReq>\n\n                      <div class="req-lbl">* Minimum 10 digits requird!</div>\n\n                    </ng-template>\n\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'maxlength\') && (signInForm.controls.phone.touched); then mobMaxReq"></ng-container>\n\n                    <ng-template #mobMaxReq>\n\n                      <div class="req-lbl">* Maximum 15 digits allowed!</div>\n\n                    </ng-template>\n\n                    <ng-container *ngIf="!signInForm.controls.phone.hasError(\'required\') && !signInForm.controls.phone.hasError(\'minlength\') && !signInForm.controls.phone.valid && (signInForm.controls.phone.touched); then mobInvalidName"></ng-container>\n\n                    <ng-template #mobInvalidName>\n\n                      <div class="req-lbl">* Invalid phone!</div>\n\n                    </ng-template>        \n\n              </ion-col>\n\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                <ion-label class="label_name">Email<span class="astrik"> * </span></ion-label>  \n\n                  <ion-item>\n\n                    <ion-input type="text" [(ngModel)]="data.email" formControlName="email" [class.invalid]="!signInForm.controls.email.valid && \n\n                      (signInForm.controls.email.dirty)"></ion-input>\n\n                      <button class="tooltip tooltip-btn" clear item-right >\n\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                       <span class="tooltiptext">Enter email</span>\n\n                      </button>\n\n                  </ion-item> \n\n                  <div class="req-lbl" *ngIf="!signInForm.controls.email.valid  &&\n\n                    (signInForm.controls.email.touched )">* Email is required!</div>                \n\n               </ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n               <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>    \n\n                 <ion-label class="label_name">Company<span class="astrik"> * </span></ion-label>  \n\n                   <ion-item>\n\n                    <ion-input type="text" [(ngModel)]="data.company" formControlName="company" [class.invalid]="!signInForm.controls.company.valid && \n\n                     (signInForm.controls.company.dirty)"></ion-input>\n\n                     <button class="tooltip tooltip-btn" clear item-right >\n\n                      <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                      <span class="tooltiptext">Enter company name</span>\n\n                     </button>\n\n                   </ion-item> \n\n                   <div class="req-lbl" *ngIf="!signInForm.controls.company.valid  &&\n\n                    (signInForm.controls.company.touched )">* Company is required!</div>                \n\n                </ion-col>                  \n\n                </ion-row>\n\n                <ion-row>\n\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                    <ion-label class="label_name" text-wrap>Department of the person to be visited<span class="astrik"> * </span></ion-label>  \n\n                      <ion-item>                          \n\n                        <select-searchable class="select-option" formControlName="department" [(ngModel)]="data.department" [items]="nameOfDepartmentList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'department\')"> \n\n                        </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                          <span class="tooltiptext">Select department name</span>\n\n                        </button>\n\n                      </ion-item> \n\n                      <div class="req-lbl" *ngIf="!signInForm.controls.department.valid  &&\n\n                       (signInForm.controls.department.dirty )">* Department is required!</div>                \n\n                  </ion-col>\n\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                    <ion-label class="label_name" text-wrap>Name of the person to be visiting<span class="astrik"> * </span></ion-label>  \n\n                      <ion-item>                              \n\n                        <select-searchable class="select-option" formControlName="nameOfPerson" [(ngModel)]="data.nameOfPerson" [items]="nameOfPersonList" itemValueField="id" itemTextField="fullName" [canSearch]="true" (onChange)="userSelectChange($event, \'emplyee\')"> \n\n                        </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                          <span class="tooltiptext">Select person name</span>\n\n                        </button>\n\n                      </ion-item> \n\n                      <div class="req-lbl" *ngIf="!signInForm.controls.nameOfPerson.valid  &&\n\n                        (signInForm.controls.nameOfPerson.dirty )">* Name of person is required!</div>                \n\n                   </ion-col>\n\n                  </ion-row> \n\n                  <ion-row>\n\n                    <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                      <ion-label class="label_name">Purpose of visit<span class="astrik"> * </span></ion-label>  \n\n                        <ion-item>\n\n                          <select-searchable class="select-option" formControlName="purpose" [(ngModel)]="data.purpose" [items]="purposeVisitedList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'purpose\')"> \n\n                          </select-searchable>\n\n                          <button class="tooltip tooltip-btn" clear item-right >\n\n                           <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                           <span class="tooltiptext">Select purpose for visiting</span>\n\n                          </button>\n\n                       </ion-item> \n\n                       <div class="req-lbl" *ngIf="!signInForm.controls.purpose.valid  &&\n\n                        (signInForm.controls.purpose.dirty )">* Purpose is required!</div>                \n\n                    </ion-col>\n\n                    <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>    \n\n                      <ion-label class="label_name" text-wrap>Are you visiting GMP controlled area?<span class="astrik"> * </span></ion-label>  \n\n                        <ion-item>\n\n                          <select-searchable class="select-option" formControlName="controlledArea" [(ngModel)]="data.controlledArea" [items]="visitingAreaList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'controlledArea\')"> \n\n                          </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                         <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                         <span class="tooltiptext">select option for GMP</span>\n\n                        </button>\n\n                       </ion-item> \n\n                       <div class="req-lbl" *ngIf="!signInForm.controls.controlledArea.valid  &&\n\n                        (signInForm.controls.controlledArea.dirty )">* GMP is required!</div>                \n\n                     </ion-col>\n\n                   </ion-row> \n\n                   <ion-row>\n\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n                        <p *ngIf="submitAttempt && !signInForm.valid" class="req-lbl" text-wrap>(*) Please fill all mandatory details.</p>\n\n                      </ion-col>\n\n                   </ion-row>\n\n                   <ion-row>\n\n                     <ion-col col-12>\n\n                      <button (click)="takePicture()">Take a Picture</button>\n\n\n\n                      Latest Picture:\n\n                      <img [src]="base64Image" *ngIf="base64Image" />\n\n                     </ion-col>\n\n                   </ion-row>\n\n                   <ion-row>\n\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n                        <button ion-button color="danger" outline round (click)="resetForm();">Reset</button>\n\n                        <button ion-button color="secondary" (click)="onSubmit(signInForm.value);" type="submit" outline round>Submit</button>\n\n                     </ion-col>\n\n                   </ion-row>\n\n            </form>\n\n          </div>          \n\n        </ion-col>\n\n      </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-in\sign-in.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["AlertController"],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_6__providers_http_service_http_service__["a" /* HttpServiceProvider */], __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */],
@@ -221,18 +256,18 @@ var SignInPage = (function () {
 
 /***/ }),
 
-/***/ 157:
+/***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TermsAndConditionsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_config_contsants__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -287,6 +322,8 @@ var TermsAndConditionsPage = (function () {
         this.policy = "Nature’s Touch grants you a revocable, non-exclusive, non-transferable, non-sublicensable, limited right to Use the Site, subject to the present Terms and Conditions. Anything in the Site may be subject to other intellectual property rights reserved by Nature’s Touch or any other party. Nothing contained herein shall be construed as conferring by implication, estoppel or otherwise any license or right under any patent or trademark of Nature’s Touch or any other party. Except as provided above, nothing contained herein shall be construed as conferring any license or right under any Nature’s Touch or any other party copyright. Nothing contained on the Site should be construed as granting any license or right to use any trademark displayed on the Site without the written permission of Nature’s Touch or such third party that may own the trademarks. You acknowledge that Nature’s Touch does not have an obligation to monitor any Content, accessible through the Site. However, you agree that Nature’s Touch has the right to monitor the Site from time to time and to disclose any information as necessary or required to comply with applicable laws, regulations or administrative or governmental or judicial requests, to operate the Site properly, to ensure the enforcement of and the compliance with the Terms and Conditions. The Site may contain some Content such as health related information, which is provided for educational purposes only and should not be interpreted as a recommendation for a specific treatment plan, product or course of action. Use of the Site and of this type of Content does not constitute medical advice and does not replace consultations with a qualified medical or other relevant professional. Some of the Content so provided may even be outdated. Nature’s Touch shall not, directly or indirectly, in any way be responsible for any loss or damage of any kind incurred as a result of, or in connection with your Use of the Site or reliance on, any such Content. By posting any Content on the Site, you agree to grant Nature’s Touch a royalty-free, world-wide license to use, copy, adapt, transmit, disclose and distribute your Content. This Site, including without limitation all Content, is protected by Canadian and worldwide copyrights laws and treaty provisions. Any unauthorized copying, redistribution, reproduction or modification of the Content by any person may be a violation of trade-mark and/or copyright laws and could result in legal action. You agree to comply with all applicable copyright laws.";
         this.disclaimer = "Nature’s Touch take no responsibility for the accuracy, validity or suitability for any purpose of the Site and of any Content contained therein, which are all provided on an “as IS” basis, without warranty of any kind, expressed or implied including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose, or non-infringement. By using this Site, you agree that your access to the Site and / or use of its contents is at your own risk. Nature’s Touch, its employees, directors, officers, agents and/or affiliates, as well as any other party involved in the creation or delivery of the Site, will not, in any event, at any time, be held responsible for any damages whatsoever, including direct, incidental, special, consequential, indirect and punitive damages or injury arising from visitor access and/or Use or inability to Use this Site or any Content and information contained and/or provided therein whether generally set out in this Site or specifically in response to visitors";
         this.signature = '';
+        console.log("constr loaded");
+        this.getTermsAndConsitionsData();
         this.modalHeader = this.navParams.get('header');
         this.modalBody = this.navParams.get('body');
         this.modalType = this.navParams.get('type');
@@ -431,6 +468,12 @@ var TermsAndConditionsPage = (function () {
     TermsAndConditionsPage.prototype.scrollToTop = function () {
         this.content.scrollToTop();
     };
+    TermsAndConditionsPage.prototype.getTermsAndConsitionsData = function () {
+        var _this = this;
+        this.storage.get('companyConfig').then(function (obj) {
+            _this.termsAndConsition = obj.termsAndConditions.changingThisBreaksApplicationSecurity;
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad__["SignaturePad"]),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad__["SignaturePad"])
@@ -441,7 +484,7 @@ var TermsAndConditionsPage = (function () {
     ], TermsAndConditionsPage.prototype, "content", void 0);
     TermsAndConditionsPage = TermsAndConditionsPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-terms-and-conditions',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\terms-and-conditions\terms-and-conditions.html"*/'<!--\n\n  Generated template for the TermsAndConditionsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Visitor Policy</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <ion-grid fixed>\n\n    <ion-row> \n\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <ion-content text-wrap style="height:355px;">\n\n          <ion-row>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ion-label><strong>The following health condition questions to be asked to all visitors/contractors intending to enter production areas of the factory. Visitors must appropriately signed in, read the GMP’s and be accompanied by management.</strong></ion-label>\n\n            </ion-col> \n\n          </ion-row>\n\n          <ion-row>\n\n            <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ion-label><strong><u>IN THE LAST 1 WEEK HAVE YOU SUFFERED FROM ANY OF THE FOLLOWING CONDITIONS:</u></strong></ion-label>\n\n            </ion-col>\n\n          </ion-row>\n\n          <ion-row>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ul>\n\n                <li> Diarrhea or vomiting</li>\n\n                <li> Salmonella, Campylobacter, Shigella or E.Coli food poisoning</li>\n\n                <li> Any Parasitic infection</li>\n\n                <li> Ear, nose or throat infections</li>\n\n                <li> Skin rashes</li>\n\n                <li> Recurring boils</li>\n\n                <li> Typhoid or paratyphoid</li>\n\n                <li> Dysentery</li>\n\n              </ul>\n\n            </ion-col>\n\n          </ion-row>\n\n          <ion-row>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ion-label>\n\n                <strong>\n\n                  If the visitor has any recent history of the above, then contact Quality Assurance for Guidance. Entry to Production areas is subject to the visitor/contractor complying with the following Hygiene rules.\n\n                </strong>\n\n              </ion-label>\n\n            </ion-col>\n\n          </ion-row>\n\n          <ion-row>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ul>\n\n                <li> Wear Company issued smock and red hair net.</li>\n\n                <li> Wear beard net if you have a beard.</li>\n\n                <li> Use antibacterial hand cleanser and hand wash basin at appropriate points.</li>\n\n                <li> Remove all jewellery and watches except plain wedding ring (must be covered properly).</li>\n\n                <li> No smoking, drinking or eating (including chewing gum) except in designated areas.</li>\n\n                <li> No perfume or false nails.</li>\n\n                <li> All cuts to be covered with a suitable metal detectable plaster.</li>\n\n              </ul>\n\n            </ion-col>\n\n          </ion-row>\n\n        </ion-content>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row padding-top>\n\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n        <button ion-button class="custom-btn" [disabled]="isAgreeDisabled" [ngStyle]="{\'background-color\': agreeDefaultButtonBGColor, \'color\': agreeBttnText}" color="secondary" (click)="openAgreeModal();" outline round>Agree</button>\n\n        <button ion-button class="custom-btn" [disabled]="isDisagreeDisabled" [ngStyle]="{\'background-color\': disagreeDefaultButtonBGColor, \'color\': disagreeBttnText}" color="danger" (click)="openDisagreeModal();" outline round>Disagree</button>\n\n        <!-- <div class="req-lbl" *ngIf="isAgreeDisagreeRequired">* Please select Agree or Disagree option.</div> -->\n\n      </ion-col>\n\n    </ion-row>\n\n    <!-- <ion-row *ngIf="!isSignatureBoxHidden">\n\n      <ion-col text-center class="digital-signature" col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n\n      </ion-col>\n\n    </ion-row> -->\n\n    <ion-row>\n\n      <ion-col text-center col-12 offset-lg-4 col-lg-4 offset-md-4 col-md-4 col-sm-12 col-xs-12>\n\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n\n        <!-- <button (click)="clearPad()"> -->\n\n          <!-- <ion-icon item-right ios="ios-refresh" md="md-refresh" style="font-size: 26px;"></ion-icon> -->\n\n          <!-- <img class="tooltip" (click)="clearPad()" height="20" width="30" src="assets/imgs/reset.png" /> -->\n\n        <!-- </button> -->\n\n        <button text-center ion-button small class="" color="dark" (click)="clearPad();">Clear signature</button>\n\n        <div class="req-lbl" *ngIf="isSignatureRequired">* Please add your signature here.</div>\n\n      </ion-col>\n\n    </ion-row>\n\n   <ion-row>\n\n      <ion-col text-center col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <button ion-button class="custom-btn" color="default" (click)="submit();" [disabled]="isSubmitDisabled" outline round>Submit</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\terms-and-conditions\terms-and-conditions.html"*/
+            selector: 'page-terms-and-conditions',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\terms-and-conditions\terms-and-conditions.html"*/'<!--\n\n  Generated template for the TermsAndConditionsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Visitor Policy</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <ion-grid fixed>\n\n    <ion-row> \n\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <ion-content text-wrap style="height:355px;">\n\n          <div [innerHTML]="termsAndConsition"></div>\n\n        </ion-content>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row padding-top>\n\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n        <button ion-button class="custom-btn" [disabled]="isAgreeDisabled" [ngStyle]="{\'background-color\': agreeDefaultButtonBGColor, \'color\': agreeBttnText}" color="secondary" (click)="openAgreeModal();" outline round>Agree</button>\n\n        <button ion-button class="custom-btn" [disabled]="isDisagreeDisabled" [ngStyle]="{\'background-color\': disagreeDefaultButtonBGColor, \'color\': disagreeBttnText}" color="danger" (click)="openDisagreeModal();" outline round>Disagree</button>\n\n        <!-- <div class="req-lbl" *ngIf="isAgreeDisagreeRequired">* Please select Agree or Disagree option.</div> -->\n\n      </ion-col>\n\n    </ion-row>\n\n    <!-- <ion-row *ngIf="!isSignatureBoxHidden">\n\n      <ion-col text-center class="digital-signature" col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n\n      </ion-col>\n\n    </ion-row> -->\n\n    <ion-row>\n\n      <ion-col text-center col-12 offset-lg-4 col-lg-4 offset-md-4 col-md-4 col-sm-12 col-xs-12>\n\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n\n        <!-- <button (click)="clearPad()"> -->\n\n          <!-- <ion-icon item-right ios="ios-refresh" md="md-refresh" style="font-size: 26px;"></ion-icon> -->\n\n          <!-- <img class="tooltip" (click)="clearPad()" height="20" width="30" src="assets/imgs/reset.png" /> -->\n\n        <!-- </button> -->\n\n        <button text-center ion-button small class="" color="dark" (click)="clearPad();">Clear signature</button>\n\n        <div class="req-lbl" *ngIf="isSignatureRequired">* Please add your signature here.</div>\n\n      </ion-col>\n\n    </ion-row>\n\n   <ion-row>\n\n      <ion-col text-center col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <button ion-button class="custom-btn" color="default" (click)="submit();" [disabled]="isSubmitDisabled" outline round>Submit</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\terms-and-conditions\terms-and-conditions.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ViewController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ModalController"],
@@ -456,7 +499,160 @@ var TermsAndConditionsPage = (function () {
 
 /***/ }),
 
-/***/ 168:
+/***/ 159:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthenticationPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__ = __webpack_require__(28);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+/**
+ * Generated class for the AuthenticationPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var AuthenticationPage = (function () {
+    function AuthenticationPage(navCtrl, navParams, menu, form, storage, http, httpServiceProvider, loadingController, toastController, events, domSanitizer) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.menu = menu;
+        this.form = form;
+        this.storage = storage;
+        this.http = http;
+        this.httpServiceProvider = httpServiceProvider;
+        this.loadingController = loadingController;
+        this.toastController = toastController;
+        this.events = events;
+        this.domSanitizer = domSanitizer;
+        this.data = { username: '', password: '' };
+        this.storage.remove('companyConfig');
+        this.loginForm = form.group({
+            username: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required],
+            password: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["Validators"].required]
+        });
+    }
+    AuthenticationPage.prototype.onLogin = function (value) {
+        var _this = this;
+        if (this.loginForm.valid) {
+            var loading_1 = this.loadingController.create({ content: "Loading..." });
+            loading_1.present();
+            try {
+                var requestData = {};
+                var request = {};
+                request["username"] = value.username;
+                request["password"] = value.password;
+                requestData["action"] = __WEBPACK_IMPORTED_MODULE_8__providers_config_contsants__["a" /* APIActions */].authenticateUser;
+                requestData["body"] = request;
+                this.httpServiceProvider.post(requestData).subscribe(function (response) {
+                    console.log("Successfully logged in! " + response.data);
+                    if (response.data != null) {
+                        // After user logs in fetch company data based on logged in user and store 
+                        // company related data in local storage
+                        _this.addCompanyInLocalStorage();
+                    }
+                    else {
+                        _this.events.publish('toastr', 'User not found!');
+                    }
+                    loading_1.dismissAll();
+                }, function (err) {
+                    console.log(err);
+                    loading_1.dismissAll();
+                    _this.events.publish('toastr', 'Something is wrong. Please try again!');
+                });
+            }
+            catch (error) {
+                console.log(error);
+                loading_1.dismissAll();
+                this.events.publish('toastr', 'Something is wrong. Please try again!');
+            }
+        }
+    };
+    AuthenticationPage.prototype.addCompanyInLocalStorage = function () {
+        var _this = this;
+        var requestData = {};
+        var request = {};
+        request["companyId"] = "5af6b480789aa61d98736751";
+        requestData["action"] = __WEBPACK_IMPORTED_MODULE_8__providers_config_contsants__["a" /* APIActions */].getCompanyConfigByCompanyId;
+        requestData["body"] = request;
+        try {
+            this.httpServiceProvider.post(requestData).subscribe(function (response) {
+                if (response.data != null) {
+                    var data = {};
+                    data["companyLogo"] = _this.domSanitizer.bypassSecurityTrustResourceUrl(response.data[0].json.logo);
+                    data["companyName"] = response.data[0].companyId.name;
+                    data["companyDescription"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.description);
+                    data["companyVideo"] = _this.domSanitizer.bypassSecurityTrustResourceUrl(response.data[0].json.videoURL);
+                    data["poweredByLogo"] = _this.domSanitizer.bypassSecurityTrustResourceUrl(response.data[0].json.poweredByLogo);
+                    data["aboutUs"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.aboutUs);
+                    data["companyWebsiteURL"] = _this.domSanitizer.bypassSecurityTrustResourceUrl(response.data[0].json.companyWebsiteURL);
+                    data["signInPageDescription"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.signInPageDescription);
+                    data["termsAndConditions"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.termsAndConditions);
+                    _this.storage.remove('companyConfig');
+                    _this.storage.set('companyConfig', data);
+                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */]);
+                }
+                else {
+                    _this.events.publish('toastr', 'Failed to get company data');
+                }
+            });
+        }
+        catch (err) {
+            this.events.publish('toastr', 'Something is wrong while storing company data');
+            console.log(err);
+        }
+    };
+    AuthenticationPage.prototype.resetForm = function () {
+        this.data = { username: '', password: '' };
+    };
+    AuthenticationPage.prototype.ionViewDidLeave = function () {
+        this.resetForm();
+    };
+    AuthenticationPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-authentication',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\authentication\authentication.html"*/'<ion-header>\n\n  <ion-navbar class="auth-header"> \n\n    <ion-title>\n\n      <ion-grid text-center>\n\n        <ion-row>\n\n          <ion-col col-12 text-center>\n\n            <img src="assets/imgs/login-title.jpeg" class="auth-header-log"/>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="item-bg-color">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <ion-label text-center><h3><strong>Login</strong></h3></ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <form [formGroup]="loginForm">\n\n      <ion-row>\n\n        <ion-col col-12 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-8 offset-xs-2>\n\n          <ion-label class="label_name">Username</ion-label>  \n\n          <ion-item>\n\n            <ion-input type="text" [(ngModel)]="data.username" formControlName="username" [class.invalid]="!loginForm.controls.username.valid && \n\n             (loginForm.controls.username.dirty)"></ion-input>\n\n            <button class="tooltip tooltip-btn" clear item-right>\n\n              <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n               <span class="tooltiptext">Enter Username</span>\n\n            </button>\n\n          </ion-item>\n\n          <ng-container *ngIf="loginForm.controls.username.hasError(\'required\') && (loginForm.controls.username.touched); then userNameReq"></ng-container>\n\n          <ng-template #userNameReq>\n\n            <div class="req-lbl">* Username is required!</div>\n\n          </ng-template>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-8 offset-xs-2>\n\n          <ion-label class="label_name">Password</ion-label>  \n\n          <ion-item>\n\n            <ion-input type="password" [(ngModel)]="data.password" formControlName="password" [class.invalid]="!loginForm.controls.password.valid && \n\n             (loginForm.controls.password.dirty)"></ion-input>\n\n            <button class="tooltip tooltip-btn" clear item-right>\n\n              <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n               <span class="tooltiptext">Enter Password</span>\n\n            </button>\n\n          </ion-item>\n\n          <ng-container *ngIf="loginForm.controls.password.hasError(\'required\') && (loginForm.controls.password.touched); then passwordReq"></ng-container>\n\n          <ng-template #passwordReq>\n\n            <div class="req-lbl">* Password is required!</div>\n\n          </ng-template>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12 text-center padding-top>\n\n          <button ion-button color="secondary" [disabled]="!loginForm.valid" (keyup.enter)="onLogin(loginForm.value);" (click)="onLogin(loginForm.value);" type="submit" round>Login</button>\n\n       </ion-col>\n\n     </ion-row>\n\n    </form>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\authentication\authentication.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["MenuController"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__["a" /* HttpServiceProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["LoadingController"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ToastController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Events"], __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__["c" /* DomSanitizer */]])
+    ], AuthenticationPage);
+    return AuthenticationPage;
+}());
+
+//# sourceMappingURL=authentication.js.map
+
+/***/ }),
+
+/***/ 170:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -469,28 +665,32 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 168;
+webpackEmptyAsyncContext.id = 170;
 
 /***/ }),
 
-/***/ 212:
+/***/ 214:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"../pages/authentication/authentication.module": [
+		700,
+		4
+	],
 	"../pages/confirmation-modal/confirmation-modal.module": [
-		690,
+		696,
 		1
 	],
 	"../pages/sign-in/sign-in.module": [
-		691,
+		697,
 		3
 	],
 	"../pages/terms-and-conditions/terms-and-conditions.module": [
-		692,
+		698,
 		2
 	],
 	"../pages/visitor-pass-modal/visitor-pass-modal.module": [
-		693,
+		699,
 		0
 	]
 };
@@ -505,21 +705,21 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 212;
+webpackAsyncContext.id = 214;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 310:
+/***/ 312:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutUsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_config_contsants__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -541,8 +741,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var AboutUsPage = (function () {
-    function AboutUsPage(navCtrl, iab) {
+    function AboutUsPage(navCtrl, storage, iab) {
         this.navCtrl = navCtrl;
+        this.storage = storage;
         this.iab = iab;
         this.options = {
             location: 'yes',
@@ -562,32 +763,46 @@ var AboutUsPage = (function () {
             fullscreen: 'yes',
             footer: 'yes'
         };
+        this.getAboutUsData();
     }
     AboutUsPage.prototype.ionViewDidLoad = function () {
         //https://www.techiediaries.com/inappbrowser-ionic-v3/
-        this.openWithCordovaBrowser(__WEBPACK_IMPORTED_MODULE_4__providers_config_contsants__["b" /* Global */].AboutUsURL);
+        //this.openWithCordovaBrowser(Global.AboutUsURL);
     };
     AboutUsPage.prototype.exitAboutPage = function () {
-        console.log('on clicked of exit()');
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
     };
     AboutUsPage.prototype.openWithSystemBrowser = function (url) {
         var target = "_system";
-        this.iab.create(url, target, this.options);
+        //this.iab.create(url, target, this.options);
     };
     AboutUsPage.prototype.openWithInAppBrowser = function (url) {
         var target = "_blank";
-        this.iab.create(url, target, this.options);
+        //this.iab.create(url, target, this.options);
     };
     AboutUsPage.prototype.openWithCordovaBrowser = function (url) {
         var target = "_self";
         this.iab.create(url, target, this.options);
     };
+    AboutUsPage.prototype.moreInfoPage = function () {
+        this.openWithCordovaBrowser(this.aboutUsMoreInfo);
+    };
+    AboutUsPage.prototype.aboutUsWhoWeArePage = function () {
+        this.openWithCordovaBrowser(this.aboutUsWhoWeAreLearnMore);
+    };
+    AboutUsPage.prototype.getAboutUsData = function () {
+        var _this = this;
+        this.storage.get('companyConfig').then(function (obj) {
+            _this.aboutUs = obj.aboutUs.changingThisBreaksApplicationSecurity;
+            _this.aboutUsWhoWeAreLearnMore = obj.aboutUsWhoWeAreLearnMore.changingThisBreaksApplicationSecurity;
+            _this.aboutUsMoreInfo = obj.aboutUsMoreInfo.changingThisBreaksApplicationSecurity;
+        });
+    };
     AboutUsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-about-us',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\about-us\about-us.html"*/'<!--\n\n  Generated template for the AboutUsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<!-- <ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center>About Us</ion-title>\n\n  </ion-navbar>\n\n</ion-header> -->\n\n\n\n<!-- <ion-content padding class="item-bg-color">\n\n  <ion-grid fixed>\n\n      <ion-row>\n\n        <ion-col>\n\n          <ion-row>\n\n            <ion-col col-x-2 col-sm-2 col-md-2 col-lg-2 col-xl-2>\n\n              <ion-img class="comp-logo-img" width="100%" height="auto" src="assets/imgs/natures-logo-header.png">               \n\n              </ion-img>              \n\n            </ion-col>\n\n            <ion-col col-x-10 col-sm-10 col-md-10 col-lg-10 col-xl-10>               \n\n              <ion-label>\n\n                  <h3>Nature\'s Touch</h3>\n\n              </ion-label>\n\n            </ion-col>\n\n          </ion-row>\n\n\n\n          <ion-row>\n\n            <div>\n\n              <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n                <ion-card class="visitor-entry-card-bg">\n\n                  <ion-card-content text-wrap class="para-lbl">\n\n                      <ion-label text-justify>\n\n                          lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n\n                          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n\n                           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est\n\n                          laborum. lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad\n\n                          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in re                   \n\n                      </ion-label>\n\n                      <ion-label text-justify>\n\n                          prehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui\n\n                          officia deserunt mollit anim id est laborum. lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n\n                          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure d\n\n                      </ion-label>\n\n                      <ion-label text-justify>\n\n                          olor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in\n\n                          culpa qui officia deserunt mollit anim id est laborum. lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut\n\n                          labore et dolore mag\n\n                      </ion-label>\n\n                      <ion-label text-justify>\n\n                          na aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in\n\n                          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui\n\n                          officia deserunt mollit anim id est laborum. lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n\n                          et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure\n\n                          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in                           \n\n                      </ion-label>\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n              </div>\n\n          </ion-row>\n\n          <ion-row padding-top>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right>\n\n              <button class="exit-btn" ion-button color="default" outline round (click)="exitAboutPage()">Exit</button>\n\n            </ion-col>\n\n          </ion-row>\n\n        </ion-col>        \n\n      </ion-row>\n\n    </ion-grid>\n\n</ion-content> -->'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\about-us\about-us.html"*/,
+            selector: 'page-about-us',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\about-us\about-us.html"*/'<!--\n\n  Generated template for the AboutUsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center>About Us</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row justify-content-center class="heading">\n\n      <ion-col class="comp-title" col-2>\n\n        <ion-img class="comp-title-img" *ngIf="!url" src="assets/imgs/natures-logo-header.png"></ion-img>\n\n      </ion-col>\n\n      <ion-col class="comp-title-pad" col-10 text-wrap>\n\n        <ion-label class="comp-title-pad-lbl">\n\n          Nature\'s Touch: Montreal Facility\n\n        </ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <div [innerHTML]="aboutUs"></div>\n\n        <button class=\'btn\' (click)=\'aboutUsWhoWeArePage()\'>Learn more</button>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row justify-content-end padding-top>\n\n      <ion-col col-12 class="about-btn">\n\n        <button class="exit-btn" ion-button color="default" outline round (click)="moreInfoPage()">More info</button>\n\n        <button class="exit-btn" ion-button color="danger" outline round (click)="exitAboutPage()">Exit</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\about-us\about-us.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
     ], AboutUsPage);
     return AboutUsPage;
 }());
@@ -596,17 +811,17 @@ var AboutUsPage = (function () {
 
 /***/ }),
 
-/***/ 312:
+/***/ 314:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignOutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_http_service_http_service__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_config_contsants__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_http_service_http_service__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_config_contsants__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -694,14 +909,16 @@ var SignOutPage = (function () {
                 console.log(response.data);
                 var list = response.data;
                 _this.users = [];
+                var userDataList = [];
                 if (list != null && list != undefined) {
                     for (var i = 0; i < list.length; i++) {
                         if (list[i] && !list[i].isLoggedOut) {
                             list[i]["fullName"] = list[i].firstName + ' ' + list[i].lastName;
-                            _this.users.push(list[i]);
+                            userDataList.push(list[i]);
                         }
                     }
                 }
+                _this.users = _this.getListByOrderASC(userDataList);
                 loading.dismissAll();
             }, function (err) {
                 console.log(err);
@@ -736,6 +953,23 @@ var SignOutPage = (function () {
             loading.dismissAll();
         }
     };
+    SignOutPage.prototype.getListByOrderASC = function (list) {
+        if (list == undefined || list == null) {
+            return list;
+        }
+        return list.sort(function (a, b) {
+            var nameA = a.fullName.toUpperCase();
+            var nameB = b.fullName.toUpperCase();
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            // names must be equal
+            return 0;
+        });
+    };
     SignOutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'page-sign-out',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-out\sign-out.html"*/'<!--\n\n  Generated template for the SignOutPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Sign-out</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding class="item-bg-color">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col class="sign-out-img-div" col-lg-4 col-sm-12 col-md-12 col-xs-12>\n\n        <ion-img class="sign-out-img" src="assets/imgs/sign-out.png"></ion-img>\n\n      </ion-col>\n\n      <ion-col col-lg-8 col-sm-12 col-md-12 col-xs-12 padding-horizontal>\n\n        <ion-row>\n\n          <ion-col>\n\n            <ion-label class="font-x-lg font-wt-500">\n\n              Thank\'s for visiting!\n\n            </ion-label>\n\n            <ion-label text-wrap text-justify>\n\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor insididunt ut labore et dolore magna aliqua.\n\n              Culpa qui officia deserunt mollit anim id est laborum.\n\n            </ion-label>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>          \n\n          <ion-col>\n\n            <form [formGroup]="signOutForm">\n\n              <ion-row>\n\n                <ion-col>\n\n                  <h6>Sign out</h6>\n\n                </ion-col>\n\n              </ion-row>\n\n              <ion-row>              \n\n                <ion-col>\n\n                  <ion-item>\n\n                    <select-searchable formControlName="UserList" [(ngModel)]="data.UserList" [items]="users" itemValueField="id" itemTextField="fullName" [canSearch]="true" (onChange)="userSelectChange($event)">\n\n                      <ng-template selectSearchableLabelTemplate>\n\n                        Name\n\n                      </ng-template>\n\n                    </select-searchable>\n\n                  </ion-item>                  \n\n                </ion-col>\n\n              </ion-row>\n\n              <ion-row text-center>\n\n                <ion-col></ion-col>\n\n              </ion-row>\n\n              <ion-row text-center>\n\n                <ion-col>\n\n                  <button ion-button color="danger" outline round (click)="resetForm();">Reset</button>               \n\n                  <button ion-button color="secondary" [disabled]="!signOutForm.valid" (click)="onSubmit(signOutForm.value);" type="submit" outline round>Submit</button>\n\n                </ion-col>\n\n              </ion-row>\n\n            </form>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-out\sign-out.html"*/
@@ -751,13 +985,13 @@ var SignOutPage = (function () {
 
 /***/ }),
 
-/***/ 354:
+/***/ 356:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(361);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -765,39 +999,51 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 359:
+/***/ 361:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(685);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_rest_rest__ = __webpack_require__(686);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_about_us_about_us__ = __webpack_require__(310);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_sign_in_sign_in__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_http_service_http_service__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_sign_out_sign_out__ = __webpack_require__(312);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ionic_select_searchable__ = __webpack_require__(687);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(686);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_rest_rest__ = __webpack_require__(687);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_about_us_about_us__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_sign_in_sign_in__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_http_service_http_service__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_sign_out_sign_out__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ionic_select_searchable__ = __webpack_require__(688);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ionic_select_searchable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_ionic_select_searchable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__service_shared_service__ = __webpack_require__(688);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_signaturepad__ = __webpack_require__(689);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__service_shared_service__ = __webpack_require__(689);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_signaturepad__ = __webpack_require__(690);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_signaturepad___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_angular2_signaturepad__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_storage__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_storage__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_authentication_authentication__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_scanner_scanner__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_barcode_scanner__ = __webpack_require__(692);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_camera__ = __webpack_require__(693);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_android_permissions__ = __webpack_require__(694);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__filters_safePipe__ = __webpack_require__(695);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
+
+
 
 
 
@@ -829,7 +1075,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_9__pages_about_us_about_us__["a" /* AboutUsPage */],
                 __WEBPACK_IMPORTED_MODULE_10__pages_sign_in_sign_in__["a" /* SignInPage */],
                 __WEBPACK_IMPORTED_MODULE_13__pages_sign_out_sign_out__["a" /* SignOutPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__["a" /* TermsAndConditionsPage */]
+                __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__["a" /* TermsAndConditionsPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_authentication_authentication__["a" /* AuthenticationPage */],
+                __WEBPACK_IMPORTED_MODULE_25__filters_safePipe__["a" /* SafePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -838,7 +1086,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/confirmation-modal/confirmation-modal.module#ConfirmationModalPageModule', name: 'ConfirmationModalPage', segment: 'confirmation-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sign-in/sign-in.module#SignInPageModule', name: 'SignInPage', segment: 'sign-in', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms-and-conditions/terms-and-conditions.module#TermsAndConditionsPageModule', name: 'TermsAndConditionsPage', segment: 'terms-and-conditions', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/visitor-pass-modal/visitor-pass-modal.module#VisitorPassModalPageModule', name: 'VisitorPassModalPage', segment: 'visitor-pass-modal', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/visitor-pass-modal/visitor-pass-modal.module#VisitorPassModalPageModule', name: 'VisitorPassModalPage', segment: 'visitor-pass-modal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/authentication/authentication.module#AuthenticationPageModule', name: 'AuthenticationPage', segment: 'authentication', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["b" /* HttpClientModule */],
@@ -854,7 +1103,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_9__pages_about_us_about_us__["a" /* AboutUsPage */],
                 __WEBPACK_IMPORTED_MODULE_10__pages_sign_in_sign_in__["a" /* SignInPage */],
                 __WEBPACK_IMPORTED_MODULE_13__pages_sign_out_sign_out__["a" /* SignOutPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__["a" /* TermsAndConditionsPage */]
+                __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__["a" /* TermsAndConditionsPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_authentication_authentication__["a" /* AuthenticationPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -863,7 +1113,11 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_8__providers_rest_rest__["a" /* RestProvider */],
                 __WEBPACK_IMPORTED_MODULE_11__providers_http_service_http_service__["a" /* HttpServiceProvider */],
                 __WEBPACK_IMPORTED_MODULE_16__service_shared_service__["a" /* SharedService */],
-                __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__["a" /* InAppBrowser */]
+                __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__["a" /* InAppBrowser */],
+                __WEBPACK_IMPORTED_MODULE_21__providers_scanner_scanner__["a" /* ScannerProvider */],
+                __WEBPACK_IMPORTED_MODULE_22__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
+                __WEBPACK_IMPORTED_MODULE_23__ionic_native_camera__["a" /* Camera */],
+                __WEBPACK_IMPORTED_MODULE_24__ionic_native_android_permissions__["a" /* AndroidPermissions */]
             ]
         })
     ], AppModule);
@@ -874,7 +1128,60 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 63:
+/***/ 65:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpServiceProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_config_contsants__ = __webpack_require__(66);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/*
+  Generated class for the HttpServiceProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var HttpServiceProvider = (function () {
+    function HttpServiceProvider(http) {
+        this.http = http;
+        this._options = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }) };
+        this.baseURL = __WEBPACK_IMPORTED_MODULE_2__providers_config_contsants__["b" /* Global */].BaseAPIURL;
+        console.log('Hello HttpServiceProvider Provider');
+    }
+    HttpServiceProvider.prototype.post = function (req) {
+        return this.http.post(this.baseURL + req.action, req.body, this._options);
+    };
+    HttpServiceProvider.prototype.get = function (req) {
+        return this.http.get(this.baseURL + req.action);
+    };
+    HttpServiceProvider.prototype.patch = function (req) {
+        return this.http.patch(this.baseURL + req.action, req.body, this._options);
+    };
+    HttpServiceProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], HttpServiceProvider);
+    return HttpServiceProvider;
+}());
+
+//# sourceMappingURL=http-service.js.map
+
+/***/ }),
+
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -894,23 +1201,27 @@ var APIActions = Object.freeze({
     "getAllDepartmets": "department",
     "getEmployeesByDepartment": "user/search",
     "getAllPurposes": "visitPurpose",
-    "getAllVisitors": "visitor"
+    "getAllVisitors": "visitor",
+    "authenticateUser": "user/login",
+    "getCompanyConfigByCompanyId": "companyconfig/search"
 });
 //# sourceMappingURL=contsants.js.map
 
 /***/ }),
 
-/***/ 64:
+/***/ 67:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_us_about_us__ = __webpack_require__(310);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sign_in_sign_in__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sign_out_sign_out__ = __webpack_require__(312);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_us_about_us__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sign_in_sign_in__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sign_out_sign_out__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -920,6 +1231,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -936,13 +1249,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * @since: 11/05/2018
  */
 var HomePage = (function () {
-    function HomePage(navCtrl, inAppBrowser) {
+    function HomePage(navCtrl, inAppBrowser, storage, domSanitizer, loadingController, toastController) {
         this.navCtrl = navCtrl;
         this.inAppBrowser = inAppBrowser;
+        this.storage = storage;
+        this.domSanitizer = domSanitizer;
+        this.loadingController = loadingController;
+        this.toastController = toastController;
         this.video = {
             url: 'https://www.youtube.com/watch?v=P_aO2quAPuY'
         };
+        console.log('home ctrl loaded');
+        this.getCompanyConfig();
     }
+    HomePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad Home');
+        this.valuesLoaded = false;
+    };
     HomePage.prototype.openAboutUsPage = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__about_us_about_us__["a" /* AboutUsPage */]);
     };
@@ -952,11 +1275,37 @@ var HomePage = (function () {
     HomePage.prototype.signOut = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__sign_out_sign_out__["a" /* SignOutPage */]);
     };
+    HomePage.prototype.getCompanyConfig = function () {
+        // let loading = this.loadingController.create({content : "Loading..."});
+        // loading.present();
+        var _this = this;
+        this.storage.get('companyConfig').then(function (obj) {
+            // loading.dismissAll();
+            if (obj != null) {
+                _this.companyName = obj.companyName;
+                _this.companyDescription = obj.companyDescription.changingThisBreaksApplicationSecurity;
+                _this.companyLogo = obj.companyLogo.changingThisBreaksApplicationSecurity;
+                _this.companyVideo = obj.companyVideo.changingThisBreaksApplicationSecurity;
+                _this.poweredByLogo = obj.poweredByLogo.changingThisBreaksApplicationSecurity;
+                _this.valuesLoaded = true;
+            }
+            console.log("Name: " + _this.companyName);
+            console.log("Desc: " + _this.companyDescription);
+            console.log("logo: " + _this.companyLogo);
+            console.log("video: " + _this.companyVideo);
+            console.log("poweredbylogo: " + _this.poweredByLogo);
+        });
+    };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row justify-content-center class="heading">\n\n      <ion-col class="comp-title" col-2>\n\n        <ion-img class="comp-title-img" *ngIf="!url" src="assets/imgs/natures-logo-header.png"></ion-img>\n\n      </ion-col>\n\n      <ion-col class="comp-title-pad" col-10 text-wrap>\n\n        <ion-label class="comp-title-pad-lbl">\n\n          Welcome to Nature\'s Touch: Montreal Facility\n\n        </ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n            <ion-label text-wrap class="comp-para-lbl">\n\n              <span class="comp-para-lbl-spn">It’s in our Nature<br/></span> Like you, we’re always seeking the best. We\n\n              travel extensively to bring great-tasting, high-quality products directly from the farm to your table.\n\n            </ion-label>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right>\n\n            <ion-img width="100" height="25" src="assets/imgs/sfs-transp.png"></ion-img>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n            <div class="video-container">\n\n              <iframe width="560" height="415" src="https://www.youtube.com/embed/P_aO2quAPuY" frameborder="0" allow="autoplay; encrypted-media"\n\n                allowfullscreen></iframe>\n\n            </div>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-col>\n\n      <ion-col class="home-lft-col" col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n\n        <div>\n\n          <ion-grid fixed>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12 class="container-left-panel">\n\n                <ion-card class="about-us-card-bg" (click)="openAboutUsPage()">\n\n                  <ion-card-content text-center>\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/about-us.png" />\n\n                    <ion-label class="font-wt-700">About Us</ion-label>\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n\n                <ion-card class="visitor-entry-card-bg" (click)="openSignInPage()">\n\n                  <ion-card-content text-center>\n\n                    <!-- <ion-thumbnail> -->\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-entry.png" />\n\n                    <ion-label class="font-wt-700">Visitor Sign In</ion-label>\n\n                    <!-- </ion-thumbnail> -->\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n\n                <ion-card class="visitor-exit-card-bg" (click)="signOut()">\n\n                  <ion-card-content text-center>\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-exit.png" />\n\n                    <ion-label class="font-wt-700">Visitor Sign Out</ion-label>\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n        </div>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row justify-content-center class="heading">\n\n      <ion-col class="comp-title" col-2>\n\n        <ion-img class="comp-title-img" [src]="companyLogo"></ion-img>\n\n      </ion-col>\n\n      <ion-col class="comp-title-pad" col-10 text-wrap>\n\n        <ion-label class="comp-title-pad-lbl" *ngIf="valuesLoaded">\n\n          Welcome to {{companyName}}: Montreal Facility\n\n        </ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n            <ion-label text-wrap class="comp-para-lbl">\n\n              <div *ngIf="valuesLoaded" [innerHTML]="companyDescription"></div>\n\n            </ion-label>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right>\n\n            <ion-img width="100" height="25" [src]="poweredByLogo"></ion-img>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n            <div class="video-container">\n\n              <iframe width="560" height="415" *ngIf="valuesLoaded" [src]="companyVideo | safe" frameborder="0" allow="autoplay; encrypted-media"\n\n                allowfullscreen></iframe>\n\n            </div>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-col>\n\n      <ion-col class="home-lft-col" col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n\n        <div>\n\n          <ion-grid fixed>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12 class="container-left-panel">\n\n                <ion-card class="about-us-card-bg" (click)="openAboutUsPage()">\n\n                  <ion-card-content text-center>\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/about-us.png" />\n\n                    <ion-label class="font-wt-700">About Us</ion-label>\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n\n                <ion-card class="visitor-entry-card-bg" (click)="openSignInPage()">\n\n                  <ion-card-content text-center>\n\n                    <!-- <ion-thumbnail> -->\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-entry.png" />\n\n                    <ion-label class="font-wt-700">Visitor Sign In</ion-label>\n\n                    <!-- </ion-thumbnail> -->\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n\n                <ion-card class="visitor-exit-card-bg" (click)="signOut()">\n\n                  <ion-card-content text-center>\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-exit.png" />\n\n                    <ion-label class="font-wt-700">Visitor Sign Out</ion-label>\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n        </div>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'safe'
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */], __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["c" /* DomSanitizer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["LoadingController"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ToastController"]])
     ], HomePage);
     return HomePage;
 }());
@@ -965,16 +1314,16 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 685:
+/***/ 686:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__ = __webpack_require__(159);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -988,21 +1337,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import { HomePage } from '../pages/home/home';
 
 var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen) {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
+    function MyApp(platform, statusBar, splashScreen, events, toastController) {
+        var _this = this;
+        this.events = events;
+        this.toastController = toastController;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__["a" /* AuthenticationPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             splashScreen.hide();
         });
+        events.subscribe('toastr', function (msg) {
+            _this.presentToast(msg);
+        });
     }
+    MyApp.prototype.presentToast = function (msg) {
+        var toast = this.toastController.create({
+            message: msg,
+            duration: 3000,
+            position: 'top'
+        });
+        toast.onDidDismiss(function () {
+            console.log('Dismissed toast');
+        });
+        toast.present();
+    };
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Platform"], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Platform"], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Events"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ToastController"]])
     ], MyApp);
     return MyApp;
 }());
@@ -1011,16 +1379,16 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 686:
+/***/ 687:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(310);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1077,7 +1445,7 @@ var RestProvider = (function () {
 
 /***/ }),
 
-/***/ 688:
+/***/ 689:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1133,14 +1501,13 @@ var SharedService = (function () {
 
 /***/ }),
 
-/***/ 83:
+/***/ 691:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpServiceProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_config_contsants__ = __webpack_require__(63);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScannerProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1152,39 +1519,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 /*
-  Generated class for the HttpServiceProvider provider.
+  Generated class for the ScannerProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-var HttpServiceProvider = (function () {
-    function HttpServiceProvider(http) {
+var ScannerProvider = (function () {
+    function ScannerProvider(http) {
         this.http = http;
-        this._options = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }) };
-        this.baseURL = __WEBPACK_IMPORTED_MODULE_2__providers_config_contsants__["b" /* Global */].BaseAPIURL;
-        console.log('Hello HttpServiceProvider Provider');
+        console.log('Hello ScannerProvider Provider');
     }
-    HttpServiceProvider.prototype.post = function (req) {
-        return this.http.post(this.baseURL + req.action, req.body, this._options);
-    };
-    HttpServiceProvider.prototype.get = function (req) {
-        return this.http.get(this.baseURL + req.action);
-    };
-    HttpServiceProvider.prototype.patch = function (req) {
-        return this.http.patch(this.baseURL + req.action, req.body, this._options);
-    };
-    HttpServiceProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
-    ], HttpServiceProvider);
-    return HttpServiceProvider;
+    ScannerProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], ScannerProvider);
+    return ScannerProvider;
 }());
 
-//# sourceMappingURL=http-service.js.map
+//# sourceMappingURL=scanner.js.map
+
+/***/ }),
+
+/***/ 695:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SafePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(28);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SafePipe = (function () {
+    function SafePipe(sanitizer) {
+        this.sanitizer = sanitizer;
+    }
+    SafePipe.prototype.transform = function (url) {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    };
+    SafePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'safe'
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* DomSanitizer */]])
+    ], SafePipe);
+    return SafePipe;
+}());
+
+//# sourceMappingURL=safePipe.js.map
 
 /***/ })
 
-},[354]);
+},[356]);
 //# sourceMappingURL=main.js.map

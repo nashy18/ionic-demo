@@ -28130,6 +28130,26 @@ ion-navbar.toolbar {
   .sign-in-bar-code-txt-align {
     text-align: center;
   }
+  .req-lbl {
+    color: #FF0000;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .about-btn {
+    text-align: center;
+  }
+  .auth-header-log {
+    height: 22px;
+    margin-top: 3px;
+  }
+}
+
+.auth-header {
+  height: 70px;
+}
+
+.auth-header .toolbar-background {
+  background-color: white !important;
 }
 
 /* Extra Small Devices, Phones */
@@ -28150,6 +28170,18 @@ ion-navbar.toolbar {
   .sign-in-bar-code-txt-align {
     text-align: center;
   }
+  .req-lbl {
+    color: #FF0000;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .about-btn {
+    text-align: center;
+  }
+  .auth-header-log {
+    height: 27px;
+    margin-top: 3px;
+  }
 }
 
 /* Small Devices, Tablets */
@@ -28166,6 +28198,18 @@ ion-navbar.toolbar {
   }
   .sign-in-bar-code-txt-align {
     text-align: center;
+  }
+  .req-lbl {
+    color: #FF0000;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .about-btn {
+    text-align: center;
+  }
+  .auth-header-log {
+    height: 45px;
+    margin-top: 3px;
   }
 }
 
@@ -28184,6 +28228,18 @@ ion-navbar.toolbar {
   .sign-in-bar-code-txt-align {
     text-align: left;
   }
+  .req-lbl {
+    color: #FF0000;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .about-btn {
+    text-align: right;
+  }
+  .auth-header-log {
+    height: 45px;
+    margin-top: 3px;
+  }
 }
 
 /* Large Devices, Wide Screens */
@@ -28201,6 +28257,18 @@ ion-navbar.toolbar {
   .sign-in-bar-code-txt-align {
     text-align: left;
   }
+  .req-lbl {
+    color: #FF0000;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .about-btn {
+    text-align: right;
+  }
+  .auth-header-log {
+    height: 45px;
+    margin-top: 3px;
+  }
 }
 
 /*==========  Non-Mobile First Method  ==========*/
@@ -28209,6 +28277,10 @@ ion-navbar.toolbar {
 /* Small Devices, Tablets */
 /* Extra Small Devices, Phones */
 /* Custom, iPhone Retina */
+page-about-us {
+  /* For following screen resolution */
+}
+
 page-about-us .page-title {
   font-size: 32px;
   font-weight: 700;
@@ -28233,7 +28305,165 @@ page-about-us .exit-btn {
 }
 
 page-about-us .para-lbl {
-  padding: 5px 10px;
+  padding: 0px;
+  margin: 0px;
+}
+
+page-about-us .para-box {
+  padding: 10px 10px 10px;
+}
+
+page-about-us .comp-title-pad {
+  padding-left: 30px;
+  text-align: left;
+}
+
+page-about-us .comp-title-pad-lbl {
+  text-align: left;
+  font-weight: bold;
+}
+
+page-about-us .comp-title {
+  text-align: right;
+}
+
+page-about-us .comp-title-img {
+  position: relative;
+  width: 65px;
+  height: 65px;
+}
+
+@media screen and (max-width: 1200px) {
+  page-about-us .comp-title {
+    max-width: 30%;
+  }
+  page-about-us .comp-title-pad {
+    font-size: 14px !important;
+  }
+  page-about-us .comp-title-pad-lbl {
+    font-size: 14px !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  page-about-us .comp-title {
+    max-width: 20%;
+  }
+  page-about-us .comp-title-pad {
+    font-size: 20px !important;
+  }
+  page-about-us .comp-title-pad-lbl {
+    font-size: 20px !important;
+  }
+  page-about-us .heading {
+    padding-left: 200px;
+  }
+}
+
+page-about-us .btn {
+  padding: 10px 24px;
+  background: #506e1f;
+  -webkit-transition: all 250ms ease-in;
+  transition: all 250ms ease-in;
+  font-size: 14px;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  border: 1px solid transparent;
+  line-height: 1.42857;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 40px;
+  color: #fff;
+}
+
+page-about-us .btn:hover {
+  color: #fff;
+}
+
+page-about-us .btn-light, page-about-us .btn:hover {
+  background: #93a86e;
+}
+
+page-about-us a, page-about-us a:hover {
+  color: #93a86e;
+}
+
+page-about-us a {
+  text-decoration: none;
+}
+
+page-authentication .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+page-authentication .tooltip-img {
+  width: 20px;
+  height: 20px;
+}
+
+page-authentication .tooltip-btn {
+  background-color: transparent;
+  margin: 0px;
+}
+
+page-authentication .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  background-color: #555;
+  color: #fff;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 110%;
+}
+
+page-authentication .tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #555;
+}
+
+page-authentication .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+page-authentication .item-cover {
+  width: 85%;
+}
+
+page-authentication .item-inner {
+  border-bottom-color: transparent !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 10px;
+  font-size: 1.8rem;
+}
+
+page-authentication .item-block {
+  border-radius: 10px;
+  min-height: 0px;
+  height: 38px;
+}
+
+page-authentication .label_name {
+  color: #444444;
 }
 
 page-confirmation-modal .close-btn {
