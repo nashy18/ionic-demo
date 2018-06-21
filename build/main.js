@@ -1317,7 +1317,6 @@ var HomePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1334,14 +1333,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 //import { HomePage } from '../pages/home/home';
 
 
-
 var MyApp = /** @class */ (function () {
     function MyApp(platform, statusBar, splashScreen, events, toastController, storage) {
         var _this = this;
         this.events = events;
         this.toastController = toastController;
         this.storage = storage;
-        this.rootPage = (this.storage.get('companyConfig')) ? __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */] : __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__["a" /* AuthenticationPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__["a" /* AuthenticationPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
