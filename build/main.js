@@ -8,13 +8,13 @@ webpackJsonp([5],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_http_service_http_service__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_config_contsants__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_platform_browser__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var AuthenticationPage = (function () {
+var AuthenticationPage = /** @class */ (function () {
     function AuthenticationPage(navCtrl, navParams, menu, form, storage, http, httpServiceProvider, loadingController, toastController, events, domSanitizer) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -117,6 +117,8 @@ var AuthenticationPage = (function () {
                     data["companyWebsiteURL"] = _this.domSanitizer.bypassSecurityTrustResourceUrl(response.data[0].json.companyWebsiteURL);
                     data["signInPageDescription"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.signInPageDescription);
                     data["termsAndConditions"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.termsAndConditions);
+                    data["aboutUsWhoWeAreLearnMore"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.aboutUsWhoWeAreLearnMore);
+                    data["aboutUsMoreInfo"] = _this.domSanitizer.bypassSecurityTrustHtml(response.data[0].json.aboutUsMoreInfo);
                     _this.storage.remove('companyConfig');
                     _this.storage.set('companyConfig', data);
                     _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__home_home__["a" /* HomePage */]);
@@ -139,7 +141,7 @@ var AuthenticationPage = (function () {
     };
     AuthenticationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-authentication',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\authentication\authentication.html"*/'<ion-header>\n\n  <ion-navbar class="auth-header"> \n\n    <ion-title>\n\n      <ion-grid text-center>\n\n        <ion-row>\n\n          <ion-col col-12 text-center>\n\n            <img src="assets/imgs/login-title.jpeg" class="auth-header-log"/>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="item-bg-color">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <ion-label text-center><h3><strong>Login</strong></h3></ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <form [formGroup]="loginForm">\n\n      <ion-row>\n\n        <ion-col col-12 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-8 offset-xs-2>\n\n          <ion-label class="label_name">Username</ion-label>  \n\n          <ion-item>\n\n            <ion-input type="text" [(ngModel)]="data.username" formControlName="username" [class.invalid]="!loginForm.controls.username.valid && \n\n             (loginForm.controls.username.dirty)"></ion-input>\n\n            <button class="tooltip tooltip-btn" clear item-right>\n\n              <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n               <span class="tooltiptext">Enter Username</span>\n\n            </button>\n\n          </ion-item>\n\n          <ng-container *ngIf="loginForm.controls.username.hasError(\'required\') && (loginForm.controls.username.touched); then userNameReq"></ng-container>\n\n          <ng-template #userNameReq>\n\n            <div class="req-lbl">* Username is required!</div>\n\n          </ng-template>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-8 offset-xs-2>\n\n          <ion-label class="label_name">Password</ion-label>  \n\n          <ion-item>\n\n            <ion-input type="password" [(ngModel)]="data.password" formControlName="password" [class.invalid]="!loginForm.controls.password.valid && \n\n             (loginForm.controls.password.dirty)"></ion-input>\n\n            <button class="tooltip tooltip-btn" clear item-right>\n\n              <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n               <span class="tooltiptext">Enter Password</span>\n\n            </button>\n\n          </ion-item>\n\n          <ng-container *ngIf="loginForm.controls.password.hasError(\'required\') && (loginForm.controls.password.touched); then passwordReq"></ng-container>\n\n          <ng-template #passwordReq>\n\n            <div class="req-lbl">* Password is required!</div>\n\n          </ng-template>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12 text-center padding-top>\n\n          <button ion-button color="secondary" [disabled]="!loginForm.valid" (keyup.enter)="onLogin(loginForm.value);" (click)="onLogin(loginForm.value);" type="submit" round>Login</button>\n\n       </ion-col>\n\n     </ion-row>\n\n    </form>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\authentication\authentication.html"*/,
+            selector: 'page-authentication',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\authentication\authentication.html"*/'<ion-header>\n  <ion-navbar class="auth-header"> \n    <ion-title>\n      <ion-grid text-center>\n        <ion-row>\n          <ion-col col-12 text-center>\n            <img src="assets/imgs/login-title.jpeg" class="auth-header-log"/>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="item-bg-color">\n  <ion-grid>\n    <ion-row>\n      <ion-col col-12>\n        <ion-label text-center><h3><strong>Login</strong></h3></ion-label>\n      </ion-col>\n    </ion-row>\n    <form [formGroup]="loginForm">\n      <ion-row>\n        <ion-col col-12 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-8 offset-xs-2>\n          <ion-label class="label_name">Username</ion-label>  \n          <ion-item>\n            <ion-input type="text" [(ngModel)]="data.username" formControlName="username" [class.invalid]="!loginForm.controls.username.valid && \n             (loginForm.controls.username.dirty)"></ion-input>\n            <button class="tooltip tooltip-btn" clear item-right>\n              <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n               <span class="tooltiptext">Enter Username</span>\n            </button>\n          </ion-item>\n          <ng-container *ngIf="loginForm.controls.username.hasError(\'required\') && (loginForm.controls.username.touched); then userNameReq"></ng-container>\n          <ng-template #userNameReq>\n            <div class="req-lbl">* Username is required!</div>\n          </ng-template>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12 col-lg-4 offset-lg-4 col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-8 offset-xs-2>\n          <ion-label class="label_name">Password</ion-label>  \n          <ion-item>\n            <ion-input type="password" [(ngModel)]="data.password" formControlName="password" [class.invalid]="!loginForm.controls.password.valid && \n             (loginForm.controls.password.dirty)"></ion-input>\n            <button class="tooltip tooltip-btn" clear item-right>\n              <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n               <span class="tooltiptext">Enter Password</span>\n            </button>\n          </ion-item>\n          <ng-container *ngIf="loginForm.controls.password.hasError(\'required\') && (loginForm.controls.password.touched); then passwordReq"></ng-container>\n          <ng-template #passwordReq>\n            <div class="req-lbl">* Password is required!</div>\n          </ng-template>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12 text-center padding-top>\n          <button ion-button color="secondary" [disabled]="!loginForm.valid" (click)="onLogin(loginForm.value);" type="submit" round>Login</button>\n       </ion-col>\n     </ion-row>\n    </form>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\authentication\authentication.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["MenuController"],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */],
@@ -161,12 +163,12 @@ var AuthenticationPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__terms_and_conditions_terms_and_conditions__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_http_service_http_service__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_http_service_http_service__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_config_contsants__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -196,7 +198,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * @author: MaheshDe
  * @since: 11/05/2018
  */
-var SignInPage = (function () {
+var SignInPage = /** @class */ (function () {
     function SignInPage(navCtrl, navParams, fb, alertCtrl, http, httpServiceProvider, storage, loadingController) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -211,7 +213,7 @@ var SignInPage = (function () {
         this.nameOfPersonList = [];
         this.purposeVisitedList = [];
         this.visitingAreaList = [];
-        this.phonePattern = "^((\\+91-?)|0)?[0-9]{10}$";
+        this.phonePattern = "^[0-9]*";
         this.emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
         this.data = { firstName: '', lastName: '', phone: '', email: '', company: '', department: '', nameOfPerson: '', purpose: '', controlledArea: '' };
         this.signInForm = fb.group({
@@ -262,6 +264,7 @@ var SignInPage = (function () {
                 this.httpServiceProvider.post(requestData).subscribe(function (response) {
                     console.log("Visitor created Successfully! " + response.data);
                     // Save visitor data in local storage
+                    _this.storage.remove('visitor');
                     _this.storage.set('visitor', response.data);
                     loading_1.dismissAll();
                     _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__terms_and_conditions_terms_and_conditions__["a" /* TermsAndConditionsPage */]);
@@ -396,7 +399,7 @@ var SignInPage = (function () {
     };
     SignInPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-sign-in',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-in\sign-in.html"*/'<!--\n\n  Generated template for the SignInPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Visitor Sign In</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-5 col-md-5 col-sm-12 col-xs-12>\n\n        <img class="sign-in-img" width="100%" height="auto" src="assets/imgs/sign-in.png" />\n\n      </ion-col>\n\n      <ion-col col-12 col-lg-7 col-md-7 col-sm-12 col-xs-12 padding-horizontal>\n\n        <div class="sign-in-bg-color">\n\n          <form [formGroup]="signInForm" >\n\n            <ion-row>\n\n             <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n               <ion-label text-wrap text-center class="page-title">We make your visit clutter free.</ion-label>\n\n               <!-- <ion-label text-wrap text-justify>Food safety Food Safety 1.svg Terms Foodborne illness Hazard analysis and critical control points (HACCP)</ion-label>\n\n               <ion-label text-wrap text-justify>• Hazard analysis and risk-based preventive controls (HARPC) Critical control point Critical factors FAT TOM pH Water activity (aw) Bacterial pathogens Clostridium botulinum Escherichia coli Listeria Salmonella Vibrio cholerae Cronobacter spp Viral pathogens Enterovirus Hepatitis A Norovirus Rotavirus Parasitic pathogens Cryptosporidium Entamoeba histolytica Giardia Trichinella v t e Food safety is a scientific discipline describing handling, preparation, and storage of food in ways that prevent food-borne illness.</ion-label>\n\n               <ion-label text-wrap text-justify>The occurrence of two or more cases of a similar illnesses resulting from the ingestion of a common food is known as a food-borne disease outbreak.</ion-label>\n\n               <ion-label text-wrap text-justify>[1] This includes a number of routines that should be followed to avoid potential health hazards.</ion-label> -->\n\n             </ion-col>\n\n           </ion-row>\n\n           <!-- <ion-row>\n\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n              <ion-label class="form-title">\n\n                Sign in\n\n              </ion-label>\n\n            </ion-col>\n\n           </ion-row> -->\n\n           <ion-row>&nbsp;</ion-row>\n\n           <ion-row>\n\n             <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>\n\n               <ion-label class="label_name" text-wrap>Scan business card here or enter below </ion-label>\n\n             </ion-col>                \n\n             <ion-col class="sign-in-bar-code-txt-align" col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-top>\n\n               <ion-img width="100" height="25" src="assets/imgs/bar_code.png"></ion-img>\n\n             </ion-col>\n\n           </ion-row>            \n\n           <ion-row>\n\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n              <ion-label class="label_name">First Name<span class="astrik"> * </span></ion-label>  \n\n                <ion-item>\n\n                  <ion-input type="text" [(ngModel)]="data.firstName" formControlName="firstName" [class.invalid]="!signInForm.controls.firstName.valid && \n\n                   (signInForm.controls.firstName.dirty)"></ion-input>\n\n                  <button class="tooltip tooltip-btn" clear item-right>\n\n                    <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                     <span class="tooltiptext">Enter first name</span>\n\n                  </button>\n\n                </ion-item> \n\n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'required\') && (signInForm.controls.firstName.touched); then fnReq"></ng-container>\n\n                <ng-template #fnReq>\n\n                  <div class="req-lbl">* First Name is required!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'minlength\') && (signInForm.controls.firstName.touched); then fnMinReq"></ng-container>\n\n                <ng-template #fnMinReq>\n\n                  <div class="req-lbl">* Minimum length is 2!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="!signInForm.controls.firstName.hasError(\'required\') && !signInForm.controls.firstName.hasError(\'minlength\') && !signInForm.controls.firstName.valid && (signInForm.controls.firstName.touched); then fnInvalidName"></ng-container>\n\n                <ng-template #fnInvalidName>\n\n                  <div class="req-lbl">* Invalid name!</div>\n\n                </ng-template>\n\n            </ion-col>\n\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n              <ion-label class="label_name">Last Name<span class="astrik"> * </span></ion-label>  \n\n                <ion-item>\n\n                  <ion-input type="text" [(ngModel)]="data.lastName" formControlName="lastName" [class.invalid]="!signInForm.controls.lastName.valid && \n\n                   (signInForm.controls.lastName.dirty)"></ion-input>\n\n                    <button class="tooltip tooltip-btn" clear item-right >\n\n                     <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                     <span class="tooltiptext">Enter last name</span>\n\n                    </button>\n\n                </ion-item> \n\n                <!-- <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'required\')  &&\n\n                  (signInForm.controls.lastName.touched )">* Last Name is required!</div>  \n\n                <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'minlength\')  &&\n\n                  (signInForm.controls.lastName.touched )">* Minimum last name length is 2!</div>  -->\n\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'required\') && (signInForm.controls.lastName.touched); then lnReq"></ng-container>\n\n                <ng-template #lnReq>\n\n                  <div class="req-lbl">* Last Name is required!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'minlength\') && (signInForm.controls.lastName.touched); then lnMinReq"></ng-container>\n\n                <ng-template #lnMinReq>\n\n                  <div class="req-lbl">* Minimum length is 2!</div>\n\n                </ng-template>\n\n                <ng-container *ngIf="!signInForm.controls.lastName.hasError(\'required\') && !signInForm.controls.lastName.hasError(\'minlength\') && !signInForm.controls.lastName.valid && (signInForm.controls.lastName.touched); then lnInvalidName"></ng-container>\n\n                <ng-template #lnInvalidName>\n\n                  <div class="req-lbl">* Invalid name!</div>\n\n                </ng-template>                 \n\n             </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                <ion-label class="label_name">Phone<span class="astrik"> * </span></ion-label>  \n\n                  <ion-item>\n\n                    <ion-input type="tel" [(ngModel)]="data.phone" formControlName="phone" [class.invalid]="!signInForm.controls.phone.valid && \n\n                      (signInForm.controls.phone.dirty)"></ion-input>\n\n                      <button class="tooltip tooltip-btn" clear item-right >\n\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                       <span class="tooltiptext">Enter your contact</span>\n\n                      </button>\n\n                  </ion-item> \n\n                  <!-- <div class="req-lbl" *ngIf="!signInForm.controls.phone.valid && \n\n                    (signInForm.controls.phone.touched )">* Phone is required (10 digit)!</div>      -->\n\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'minlength\') && (signInForm.controls.phone.touched); then mobMinReq"></ng-container>\n\n                    <ng-template #mobMinReq>\n\n                      <div class="req-lbl">* Minimum 10 digits requird!</div>\n\n                    </ng-template>\n\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'maxlength\') && (signInForm.controls.phone.touched); then mobMaxReq"></ng-container>\n\n                    <ng-template #mobMaxReq>\n\n                      <div class="req-lbl">* Maximum 15 digits allowed!</div>\n\n                    </ng-template>\n\n                    <ng-container *ngIf="!signInForm.controls.phone.hasError(\'required\') && !signInForm.controls.phone.hasError(\'minlength\') && !signInForm.controls.phone.valid && (signInForm.controls.phone.touched); then mobInvalidName"></ng-container>\n\n                    <ng-template #mobInvalidName>\n\n                      <div class="req-lbl">* Invalid phone!</div>\n\n                    </ng-template>        \n\n              </ion-col>\n\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                <ion-label class="label_name">Email<span class="astrik"> * </span></ion-label>  \n\n                  <ion-item>\n\n                    <ion-input type="text" [(ngModel)]="data.email" formControlName="email" [class.invalid]="!signInForm.controls.email.valid && \n\n                      (signInForm.controls.email.dirty)"></ion-input>\n\n                      <button class="tooltip tooltip-btn" clear item-right >\n\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                       <span class="tooltiptext">Enter email</span>\n\n                      </button>\n\n                  </ion-item> \n\n                  <div class="req-lbl" *ngIf="!signInForm.controls.email.valid  &&\n\n                    (signInForm.controls.email.touched )">* Email is required!</div>                \n\n               </ion-col>\n\n              </ion-row>\n\n              <ion-row>\n\n               <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>    \n\n                 <ion-label class="label_name">Company<span class="astrik"> * </span></ion-label>  \n\n                   <ion-item>\n\n                    <ion-input type="text" [(ngModel)]="data.company" formControlName="company" [class.invalid]="!signInForm.controls.company.valid && \n\n                     (signInForm.controls.company.dirty)"></ion-input>\n\n                     <button class="tooltip tooltip-btn" clear item-right >\n\n                      <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                      <span class="tooltiptext">Enter company name</span>\n\n                     </button>\n\n                   </ion-item> \n\n                   <div class="req-lbl" *ngIf="!signInForm.controls.company.valid  &&\n\n                    (signInForm.controls.company.touched )">* Company is required!</div>                \n\n                </ion-col>                  \n\n                </ion-row>\n\n                <ion-row>\n\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                    <ion-label class="label_name" text-wrap>Department of the person to be visited<span class="astrik"> * </span></ion-label>  \n\n                      <ion-item>                          \n\n                        <select-searchable class="select-option" formControlName="department" [(ngModel)]="data.department" [items]="nameOfDepartmentList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'department\')"> \n\n                        </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                          <span class="tooltiptext">Select department name</span>\n\n                        </button>\n\n                      </ion-item> \n\n                      <div class="req-lbl" *ngIf="!signInForm.controls.department.valid  &&\n\n                       (signInForm.controls.department.dirty )">* Department is required!</div>                \n\n                  </ion-col>\n\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                    <ion-label class="label_name" text-wrap>Name of the person to be visiting<span class="astrik"> * </span></ion-label>  \n\n                      <ion-item>                              \n\n                        <select-searchable class="select-option" formControlName="nameOfPerson" [(ngModel)]="data.nameOfPerson" [items]="nameOfPersonList" itemValueField="id" itemTextField="fullName" [canSearch]="true" (onChange)="userSelectChange($event, \'emplyee\')"> \n\n                        </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                          <span class="tooltiptext">Select person name</span>\n\n                        </button>\n\n                      </ion-item> \n\n                      <div class="req-lbl" *ngIf="!signInForm.controls.nameOfPerson.valid  &&\n\n                        (signInForm.controls.nameOfPerson.dirty )">* Name of person is required!</div>                \n\n                   </ion-col>\n\n                  </ion-row> \n\n                  <ion-row>\n\n                    <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n\n                      <ion-label class="label_name">Purpose of visit<span class="astrik"> * </span></ion-label>  \n\n                        <ion-item>\n\n                          <select-searchable class="select-option" formControlName="purpose" [(ngModel)]="data.purpose" [items]="purposeVisitedList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'purpose\')"> \n\n                          </select-searchable>\n\n                          <button class="tooltip tooltip-btn" clear item-right >\n\n                           <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                           <span class="tooltiptext">Select purpose for visiting</span>\n\n                          </button>\n\n                       </ion-item> \n\n                       <div class="req-lbl" *ngIf="!signInForm.controls.purpose.valid  &&\n\n                        (signInForm.controls.purpose.dirty )">* Purpose is required!</div>                \n\n                    </ion-col>\n\n                    <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>    \n\n                      <ion-label class="label_name" text-wrap>Are you visiting GMP controlled area?<span class="astrik"> * </span></ion-label>  \n\n                        <ion-item>\n\n                          <select-searchable class="select-option" formControlName="controlledArea" [(ngModel)]="data.controlledArea" [items]="visitingAreaList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'controlledArea\')"> \n\n                          </select-searchable>\n\n                        <button class="tooltip tooltip-btn" clear item-right >\n\n                         <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n\n                         <span class="tooltiptext">select option for GMP</span>\n\n                        </button>\n\n                       </ion-item> \n\n                       <div class="req-lbl" *ngIf="!signInForm.controls.controlledArea.valid  &&\n\n                        (signInForm.controls.controlledArea.dirty )">* GMP is required!</div>                \n\n                     </ion-col>\n\n                   </ion-row> \n\n                   <ion-row>\n\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n                        <p *ngIf="submitAttempt && !signInForm.valid" class="req-lbl" text-wrap>(*) Please fill all mandatory details.</p>\n\n                      </ion-col>\n\n                   </ion-row>\n\n                   <!-- <ion-row>\n\n                     <ion-col col-12>\n\n                      <button (click)="takePicture()">Take a Picture</button>\n\n\n\n                      Latest Picture:\n\n                      <img [src]="base64Image" *ngIf="base64Image" />\n\n                     </ion-col>\n\n                   </ion-row> -->\n\n                   <ion-row>\n\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n                        <button ion-button color="danger" outline round (click)="resetForm();">Reset</button>\n\n                        <button ion-button color="secondary" (click)="onSubmit(signInForm.value);" type="submit" outline round>Submit</button>\n\n                     </ion-col>\n\n                   </ion-row>\n\n            </form>\n\n          </div>          \n\n        </ion-col>\n\n      </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-in\sign-in.html"*/,
+            selector: 'page-sign-in',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\sign-in\sign-in.html"*/'<!--\n  Generated template for the SignInPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title text-center>Visitor Sign In</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding class="item-bg-color">\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col col-12 col-lg-5 col-md-5 col-sm-12 col-xs-12>\n        <img class="sign-in-img" width="100%" height="auto" src="assets/imgs/sign-in.png" />\n      </ion-col>\n      <ion-col col-12 col-lg-7 col-md-7 col-sm-12 col-xs-12 padding-horizontal>\n        <div class="sign-in-bg-color">\n          <form [formGroup]="signInForm" >\n            <ion-row>\n             <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n               <ion-label text-wrap text-center class="page-title">We make your visit clutter free.</ion-label>\n               <!-- <ion-label text-wrap text-justify>Food safety Food Safety 1.svg Terms Foodborne illness Hazard analysis and critical control points (HACCP)</ion-label>\n               <ion-label text-wrap text-justify>• Hazard analysis and risk-based preventive controls (HARPC) Critical control point Critical factors FAT TOM pH Water activity (aw) Bacterial pathogens Clostridium botulinum Escherichia coli Listeria Salmonella Vibrio cholerae Cronobacter spp Viral pathogens Enterovirus Hepatitis A Norovirus Rotavirus Parasitic pathogens Cryptosporidium Entamoeba histolytica Giardia Trichinella v t e Food safety is a scientific discipline describing handling, preparation, and storage of food in ways that prevent food-borne illness.</ion-label>\n               <ion-label text-wrap text-justify>The occurrence of two or more cases of a similar illnesses resulting from the ingestion of a common food is known as a food-borne disease outbreak.</ion-label>\n               <ion-label text-wrap text-justify>[1] This includes a number of routines that should be followed to avoid potential health hazards.</ion-label> -->\n             </ion-col>\n           </ion-row>\n           <!-- <ion-row>\n            <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n              <ion-label class="form-title">\n                Sign in\n              </ion-label>\n            </ion-col>\n           </ion-row> -->\n           <ion-row>&nbsp;</ion-row>\n           <ion-row>\n             <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>\n               <ion-label class="label_name" text-wrap>Scan business card here or enter below </ion-label>\n             </ion-col>                \n             <ion-col class="sign-in-bar-code-txt-align" col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-top>\n               <ion-img width="100" height="25" src="assets/imgs/bar_code.png"></ion-img>\n             </ion-col>\n           </ion-row>            \n           <ion-row>\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n              <ion-label class="label_name">First Name<span class="astrik"> * </span></ion-label>  \n                <ion-item>\n                  <ion-input type="text" [(ngModel)]="data.firstName" formControlName="firstName" [class.invalid]="!signInForm.controls.firstName.valid && \n                   (signInForm.controls.firstName.dirty)"></ion-input>\n                  <button class="tooltip tooltip-btn" clear item-right>\n                    <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                     <span class="tooltiptext">Enter first name</span>\n                  </button>\n                </ion-item> \n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'required\') && (signInForm.controls.firstName.touched); then fnReq"></ng-container>\n                <ng-template #fnReq>\n                  <div class="req-lbl">* First Name is required!</div>\n                </ng-template>\n                <ng-container *ngIf="signInForm.controls.firstName.hasError(\'minlength\') && (signInForm.controls.firstName.touched); then fnMinReq"></ng-container>\n                <ng-template #fnMinReq>\n                  <div class="req-lbl">* Minimum length is 2!</div>\n                </ng-template>\n                <ng-container *ngIf="!signInForm.controls.firstName.hasError(\'required\') && !signInForm.controls.firstName.hasError(\'minlength\') && !signInForm.controls.firstName.valid && (signInForm.controls.firstName.touched); then fnInvalidName"></ng-container>\n                <ng-template #fnInvalidName>\n                  <div class="req-lbl">* Invalid name!</div>\n                </ng-template>\n            </ion-col>\n            <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n              <ion-label class="label_name">Last Name<span class="astrik"> * </span></ion-label>  \n                <ion-item>\n                  <ion-input type="text" [(ngModel)]="data.lastName" formControlName="lastName" [class.invalid]="!signInForm.controls.lastName.valid && \n                   (signInForm.controls.lastName.dirty)"></ion-input>\n                    <button class="tooltip tooltip-btn" clear item-right >\n                     <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                     <span class="tooltiptext">Enter last name</span>\n                    </button>\n                </ion-item> \n                <!-- <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'required\')  &&\n                  (signInForm.controls.lastName.touched )">* Last Name is required!</div>  \n                <div class="req-lbl" *ngIf="signInForm.controls.lastName.hasError(\'minlength\')  &&\n                  (signInForm.controls.lastName.touched )">* Minimum last name length is 2!</div>  -->\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'required\') && (signInForm.controls.lastName.touched); then lnReq"></ng-container>\n                <ng-template #lnReq>\n                  <div class="req-lbl">* Last Name is required!</div>\n                </ng-template>\n                <ng-container *ngIf="signInForm.controls.lastName.hasError(\'minlength\') && (signInForm.controls.lastName.touched); then lnMinReq"></ng-container>\n                <ng-template #lnMinReq>\n                  <div class="req-lbl">* Minimum length is 2!</div>\n                </ng-template>\n                <ng-container *ngIf="!signInForm.controls.lastName.hasError(\'required\') && !signInForm.controls.lastName.hasError(\'minlength\') && !signInForm.controls.lastName.valid && (signInForm.controls.lastName.touched); then lnInvalidName"></ng-container>\n                <ng-template #lnInvalidName>\n                  <div class="req-lbl">* Invalid name!</div>\n                </ng-template>                 \n             </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n                <ion-label class="label_name">Phone<span class="astrik"> * </span></ion-label>  \n                  <ion-item>\n                    <ion-input type="tel" [(ngModel)]="data.phone" formControlName="phone" [class.invalid]="!signInForm.controls.phone.valid && \n                      (signInForm.controls.phone.dirty)"></ion-input>\n                      <button class="tooltip tooltip-btn" clear item-right >\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                       <span class="tooltiptext">Enter your contact</span>\n                      </button>\n                  </ion-item> \n                  <!-- <div class="req-lbl" *ngIf="!signInForm.controls.phone.valid && \n                    (signInForm.controls.phone.touched )">* Phone is required (10 digit)!</div>      -->\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'minlength\') && (signInForm.controls.phone.touched); then mobMinReq"></ng-container>\n                    <ng-template #mobMinReq>\n                      <div class="req-lbl">* Minimum 10 digits requird!</div>\n                    </ng-template>\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'maxlength\') && (signInForm.controls.phone.touched); then mobMaxReq"></ng-container>\n                    <ng-template #mobMaxReq>\n                      <div class="req-lbl">* Maximum 15 digits allowed!</div>\n                    </ng-template>\n                    <ng-container *ngIf="signInForm.controls.phone.hasError(\'required\') && !signInForm.controls.phone.hasError(\'maxlength\') && !signInForm.controls.phone.hasError(\'minlength\') && !signInForm.controls.phone.valid && (signInForm.controls.phone.touched); then mobInvalidName"></ng-container>\n                    <ng-template #mobInvalidName>\n                      <div class="req-lbl">* Phone is required!</div>\n                    </ng-template> \n                    <ng-container *ngIf="!signInForm.controls.phone.hasError(\'required\') && !signInForm.controls.phone.hasError(\'maxlength\') && !signInForm.controls.phone.hasError(\'minlength\') && !signInForm.controls.phone.valid && (signInForm.controls.phone.touched); then wrongMob"></ng-container>\n                    <ng-template #wrongMob>\n                      <div class="req-lbl">* Invalid phone!</div>\n                    </ng-template>        \n              </ion-col>\n              <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n                <ion-label class="label_name">Email<span class="astrik"> * </span></ion-label>  \n                  <ion-item>\n                    <ion-input type="text" [(ngModel)]="data.email" formControlName="email" [class.invalid]="!signInForm.controls.email.valid && \n                      (signInForm.controls.email.dirty)"></ion-input>\n                      <button class="tooltip tooltip-btn" clear item-right >\n                       <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                       <span class="tooltiptext">Enter email</span>\n                      </button>\n                  </ion-item> \n                  <div class="req-lbl" *ngIf="!signInForm.controls.email.valid  &&\n                    (signInForm.controls.email.touched )">* Email is required!</div>                \n               </ion-col>\n              </ion-row>\n              <ion-row>\n               <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>    \n                 <ion-label class="label_name">Company<span class="astrik"> * </span></ion-label>  \n                   <ion-item>\n                    <ion-input type="text" [(ngModel)]="data.company" formControlName="company" [class.invalid]="!signInForm.controls.company.valid && \n                     (signInForm.controls.company.dirty)"></ion-input>\n                     <button class="tooltip tooltip-btn" clear item-right >\n                      <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                      <span class="tooltiptext">Enter company name</span>\n                     </button>\n                   </ion-item> \n                   <div class="req-lbl" *ngIf="!signInForm.controls.company.valid  &&\n                    (signInForm.controls.company.touched )">* Company is required!</div>                \n                </ion-col>                  \n                </ion-row>\n                <ion-row>\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n                    <ion-label class="label_name" text-wrap>Department of the person to be visited<span class="astrik"> * </span></ion-label>  \n                      <ion-item>                          \n                        <select-searchable class="select-option" formControlName="department" [(ngModel)]="data.department" [items]="nameOfDepartmentList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'department\')"> \n                        </select-searchable>\n                        <button class="tooltip tooltip-btn" clear item-right >\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                          <span class="tooltiptext">Select department name</span>\n                        </button>\n                      </ion-item> \n                      <div class="req-lbl" *ngIf="!signInForm.controls.department.valid  &&\n                       (signInForm.controls.department.dirty )">* Department is required!</div>                \n                  </ion-col>\n                  <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n                    <ion-label class="label_name" text-wrap>Name of the person to be visiting<span class="astrik"> * </span></ion-label>  \n                      <ion-item>                              \n                        <select-searchable class="select-option" formControlName="nameOfPerson" [(ngModel)]="data.nameOfPerson" [items]="nameOfPersonList" itemValueField="id" itemTextField="fullName" [canSearch]="true" (onChange)="userSelectChange($event, \'emplyee\')"> \n                        </select-searchable>\n                        <button class="tooltip tooltip-btn" clear item-right >\n                          <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                          <span class="tooltiptext">Select person name</span>\n                        </button>\n                      </ion-item> \n                      <div class="req-lbl" *ngIf="!signInForm.controls.nameOfPerson.valid  &&\n                        (signInForm.controls.nameOfPerson.dirty )">* Name of person is required!</div>                \n                   </ion-col>\n                  </ion-row> \n                  <ion-row>\n                    <ion-col col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12>    \n                      <ion-label class="label_name">Purpose of visit<span class="astrik"> * </span></ion-label>  \n                        <ion-item>\n                          <select-searchable class="select-option" formControlName="purpose" [(ngModel)]="data.purpose" [items]="purposeVisitedList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'purpose\')"> \n                          </select-searchable>\n                          <button class="tooltip tooltip-btn" clear item-right >\n                           <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                           <span class="tooltiptext">Select purpose for visiting</span>\n                          </button>\n                       </ion-item> \n                       <div class="req-lbl" *ngIf="!signInForm.controls.purpose.valid  &&\n                        (signInForm.controls.purpose.dirty )">* Purpose is required!</div>                \n                    </ion-col>\n                    <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>    \n                      <ion-label class="label_name" text-wrap>Are you visiting GMP controlled area?<span class="astrik"> * </span></ion-label>  \n                        <ion-item>\n                          <select-searchable class="select-option" formControlName="controlledArea" [(ngModel)]="data.controlledArea" [items]="visitingAreaList" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="userSelectChange($event, \'controlledArea\')"> \n                          </select-searchable>\n                        <button class="tooltip tooltip-btn" clear item-right >\n                         <img class="tooltip tooltip-img" src="assets/imgs/help_outline.svg">\n                         <span class="tooltiptext">select option for GMP</span>\n                        </button>\n                       </ion-item> \n                       <div class="req-lbl" *ngIf="!signInForm.controls.controlledArea.valid  &&\n                        (signInForm.controls.controlledArea.dirty )">* GMP is required!</div>                \n                     </ion-col>\n                   </ion-row> \n                   <ion-row>\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n                        <p *ngIf="submitAttempt && !signInForm.valid" class="req-lbl" text-wrap>(*) Please fill all mandatory details.</p>\n                      </ion-col>\n                   </ion-row>\n                   <ion-row>\n                      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n                        <button ion-button color="danger" outline round (click)="resetForm();">Reset</button>\n                        <button ion-button color="secondary" (click)="onSubmit(signInForm.value);" type="submit" outline round>Submit</button>\n                     </ion-col>\n                   </ion-row>\n            </form>\n          </div>          \n        </ion-col>\n      </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\sign-in\sign-in.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["AlertController"],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_6__providers_http_service_http_service__["a" /* HttpServiceProvider */], __WEBPACK_IMPORTED_MODULE_8__ionic_storage__["b" /* Storage */],
@@ -418,8 +421,8 @@ var SignInPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad__ = __webpack_require__(313);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_signaturepad_signature_pad__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_http_service_http_service__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_config_contsants__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -443,7 +446,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var TermsAndConditionsPage = (function () {
+var TermsAndConditionsPage = /** @class */ (function () {
     function TermsAndConditionsPage(navCtrl, navParams, viewCtrl, modalCtrl, httpServiceProvider, storage, loadingController) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -637,7 +640,7 @@ var TermsAndConditionsPage = (function () {
     ], TermsAndConditionsPage.prototype, "content", void 0);
     TermsAndConditionsPage = TermsAndConditionsPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-terms-and-conditions',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\terms-and-conditions\terms-and-conditions.html"*/'<!--\n\n  Generated template for the TermsAndConditionsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Visitor Policy</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <ion-grid fixed>\n\n    <ion-row> \n\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <ion-content text-wrap style="height:355px;">\n\n          <div [innerHTML]="termsAndConsition"></div>\n\n        </ion-content>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row padding-top>\n\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n\n        <button ion-button class="custom-btn" [disabled]="isAgreeDisabled" [ngStyle]="{\'background-color\': agreeDefaultButtonBGColor, \'color\': agreeBttnText}" color="secondary" (click)="openAgreeModal();" outline round>Agree</button>\n\n        <button ion-button class="custom-btn" [disabled]="isDisagreeDisabled" [ngStyle]="{\'background-color\': disagreeDefaultButtonBGColor, \'color\': disagreeBttnText}" color="danger" (click)="openDisagreeModal();" outline round>Disagree</button>\n\n        <!-- <div class="req-lbl" *ngIf="isAgreeDisagreeRequired">* Please select Agree or Disagree option.</div> -->\n\n      </ion-col>\n\n    </ion-row>\n\n    <!-- <ion-row *ngIf="!isSignatureBoxHidden">\n\n      <ion-col text-center class="digital-signature" col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n\n      </ion-col>\n\n    </ion-row> -->\n\n    <ion-row>\n\n      <ion-col text-center col-12 offset-lg-4 col-lg-4 offset-md-4 col-md-4 col-sm-12 col-xs-12>\n\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n\n        <!-- <button (click)="clearPad()"> -->\n\n          <!-- <ion-icon item-right ios="ios-refresh" md="md-refresh" style="font-size: 26px;"></ion-icon> -->\n\n          <!-- <img class="tooltip" (click)="clearPad()" height="20" width="30" src="assets/imgs/reset.png" /> -->\n\n        <!-- </button> -->\n\n        <button text-center ion-button small class="" color="dark" (click)="clearPad();">Clear signature</button>\n\n        <div class="req-lbl" *ngIf="isSignatureRequired">* Please add your signature here.</div>\n\n      </ion-col>\n\n    </ion-row>\n\n   <ion-row>\n\n      <ion-col text-center col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <button ion-button class="custom-btn" color="default" (click)="submit();" [disabled]="isSubmitDisabled" outline round>Submit</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\terms-and-conditions\terms-and-conditions.html"*/
+            selector: 'page-terms-and-conditions',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\terms-and-conditions\terms-and-conditions.html"*/'<!--\n  Generated template for the TermsAndConditionsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title text-center>Visitor Policy</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content padding>\n  <ion-grid fixed>\n    <ion-row> \n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n        <ion-content text-wrap style="height:355px;">\n          <div [innerHTML]="termsAndConsition"></div>\n        </ion-content>\n      </ion-col>\n    </ion-row>\n    <ion-row padding-top>\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center>\n        <button ion-button class="custom-btn" [disabled]="isAgreeDisabled" [ngStyle]="{\'background-color\': agreeDefaultButtonBGColor, \'color\': agreeBttnText}" color="secondary" (click)="openAgreeModal();" outline round>Agree</button>\n        <button ion-button class="custom-btn" [disabled]="isDisagreeDisabled" [ngStyle]="{\'background-color\': disagreeDefaultButtonBGColor, \'color\': disagreeBttnText}" color="danger" (click)="openDisagreeModal();" outline round>Disagree</button>\n        <!-- <div class="req-lbl" *ngIf="isAgreeDisagreeRequired">* Please select Agree or Disagree option.</div> -->\n      </ion-col>\n    </ion-row>\n    <!-- <ion-row *ngIf="!isSignatureBoxHidden">\n      <ion-col text-center class="digital-signature" col-lg-12 col-md-12 col-sm-12 col-xs-12>\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n      </ion-col>\n    </ion-row> -->\n    <ion-row>\n      <ion-col text-center col-12 offset-lg-4 col-lg-4 offset-md-4 col-md-4 col-sm-12 col-xs-12>\n        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>\n        <!-- <button (click)="clearPad()"> -->\n          <!-- <ion-icon item-right ios="ios-refresh" md="md-refresh" style="font-size: 26px;"></ion-icon> -->\n          <!-- <img class="tooltip" (click)="clearPad()" height="20" width="30" src="assets/imgs/reset.png" /> -->\n        <!-- </button> -->\n        <button text-center ion-button small class="" color="dark" (click)="clearPad();">Clear signature</button>\n        <div class="req-lbl" *ngIf="isSignatureRequired">* Please add your signature here.</div>\n      </ion-col>\n    </ion-row>\n   <ion-row>\n      <ion-col text-center col-lg-12 col-md-12 col-sm-12 col-xs-12>\n        <button ion-button class="custom-btn" color="default" (click)="submit();" [disabled]="isSubmitDisabled" outline round>Submit</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\terms-and-conditions\terms-and-conditions.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ViewController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ModalController"],
@@ -674,23 +677,23 @@ webpackEmptyAsyncContext.id = 170;
 
 var map = {
 	"../pages/authentication/authentication.module": [
-		696,
+		692,
 		4
 	],
 	"../pages/confirmation-modal/confirmation-modal.module": [
-		697,
+		696,
 		1
 	],
 	"../pages/sign-in/sign-in.module": [
-		698,
+		693,
 		3
 	],
 	"../pages/terms-and-conditions/terms-and-conditions.module": [
-		699,
+		694,
 		2
 	],
 	"../pages/visitor-pass-modal/visitor-pass-modal.module": [
-		700,
+		695,
 		0
 	]
 };
@@ -717,8 +720,8 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutUsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -740,7 +743,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var AboutUsPage = (function () {
+var AboutUsPage = /** @class */ (function () {
     function AboutUsPage(navCtrl, storage, iab) {
         this.navCtrl = navCtrl;
         this.storage = storage;
@@ -781,7 +784,7 @@ var AboutUsPage = (function () {
         //this.iab.create(url, target, this.options);
     };
     AboutUsPage.prototype.openWithCordovaBrowser = function (url) {
-        var target = "_self";
+        var target = "_blank";
         this.iab.create(url, target, this.options);
     };
     AboutUsPage.prototype.moreInfoPage = function () {
@@ -800,11 +803,12 @@ var AboutUsPage = (function () {
     };
     AboutUsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-about-us',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\about-us\about-us.html"*/'<!--\n\n  Generated template for the AboutUsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center>About Us</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row justify-content-center class="heading">\n\n      <ion-col class="comp-title" col-2>\n\n        <ion-img class="comp-title-img" *ngIf="!url" src="assets/imgs/natures-logo-header.png"></ion-img>\n\n      </ion-col>\n\n      <ion-col class="comp-title-pad" col-10 text-wrap>\n\n        <ion-label class="comp-title-pad-lbl">\n\n          Nature\'s Touch: Montreal Facility\n\n        </ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n        <div [innerHTML]="aboutUs"></div>\n\n        <button class=\'btn\' (click)=\'aboutUsWhoWeArePage()\'>Learn more</button>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row justify-content-end padding-top>\n\n      <ion-col col-12 class="about-btn">\n\n        <button class="exit-btn" ion-button color="default" outline round (click)="moreInfoPage()">More info</button>\n\n        <button class="exit-btn" ion-button color="danger" outline round (click)="exitAboutPage()">Exit</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\about-us\about-us.html"*/,
+            selector: 'page-about-us',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\about-us\about-us.html"*/'<!--\n  Generated template for the AboutUsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title text-center>About Us</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="item-bg-color">\n  <ion-grid fixed>\n    <ion-row justify-content-center class="heading">\n      <ion-col class="comp-title" col-2>\n        <ion-img class="comp-title-img" *ngIf="!url" src="assets/imgs/natures-logo-header.png"></ion-img>\n      </ion-col>\n      <ion-col class="comp-title-pad" col-10 text-wrap>\n        <ion-label class="comp-title-pad-lbl">\n          Nature\'s Touch: Montreal Facility\n        </ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n        <div [innerHTML]="aboutUs"></div>\n        <button class=\'btn\' (click)=\'aboutUsWhoWeArePage()\'>Learn more</button>\n      </ion-col>\n    </ion-row>\n    <ion-row justify-content-end padding-top>\n      <ion-col col-12 class="about-btn">\n        <button class="exit-btn" ion-button color="default" outline round (click)="moreInfoPage()">More info</button>\n        <button class="exit-btn" ion-button color="danger" outline round (click)="exitAboutPage()">Exit</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\about-us\about-us.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" && _c || Object])
     ], AboutUsPage);
     return AboutUsPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=about-us.js.map
@@ -818,10 +822,10 @@ var AboutUsPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignOutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_http_service_http_service__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_http_service_http_service__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_config_contsants__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -845,7 +849,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var SignOutPage = (function () {
+var SignOutPage = /** @class */ (function () {
     function SignOutPage(navCtrl, navParams, formBuilder, alertCtrl, httpServiceProvider, loadingController) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -972,7 +976,7 @@ var SignOutPage = (function () {
     };
     SignOutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-sign-out',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-out\sign-out.html"*/'<!--\n\n  Generated template for the SignOutPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Sign-out</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding class="item-bg-color">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col class="sign-out-img-div" col-lg-4 col-sm-12 col-md-12 col-xs-12>\n\n        <ion-img class="sign-out-img" src="assets/imgs/sign-out.png"></ion-img>\n\n      </ion-col>\n\n      <ion-col col-lg-8 col-sm-12 col-md-12 col-xs-12 padding-horizontal>\n\n        <ion-row>\n\n          <ion-col>\n\n            <ion-label class="font-x-lg font-wt-500">\n\n              Thank\'s for visiting!\n\n            </ion-label>\n\n            <ion-label text-wrap text-justify>\n\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor insididunt ut labore et dolore magna aliqua.\n\n              Culpa qui officia deserunt mollit anim id est laborum.\n\n            </ion-label>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>          \n\n          <ion-col>\n\n            <form [formGroup]="signOutForm">\n\n              <ion-row>\n\n                <ion-col>\n\n                  <h6>Sign out</h6>\n\n                </ion-col>\n\n              </ion-row>\n\n              <ion-row>              \n\n                <ion-col>\n\n                  <ion-item>\n\n                    <select-searchable formControlName="UserList" [(ngModel)]="data.UserList" [items]="users" itemValueField="id" itemTextField="fullName" [canSearch]="true" (onChange)="userSelectChange($event)">\n\n                      <ng-template selectSearchableLabelTemplate>\n\n                        Name\n\n                      </ng-template>\n\n                    </select-searchable>\n\n                  </ion-item>                  \n\n                </ion-col>\n\n              </ion-row>\n\n              <ion-row text-center>\n\n                <ion-col></ion-col>\n\n              </ion-row>\n\n              <ion-row text-center>\n\n                <ion-col>\n\n                  <button ion-button color="danger" outline round (click)="resetForm();">Reset</button>               \n\n                  <button ion-button color="secondary" [disabled]="!signOutForm.valid" (click)="onSubmit(signOutForm.value);" type="submit" outline round>Submit</button>\n\n                </ion-col>\n\n              </ion-row>\n\n            </form>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\sign-out\sign-out.html"*/
+            selector: 'page-sign-out',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\sign-out\sign-out.html"*/'<!--\n  Generated template for the SignOutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Sign-out</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding class="item-bg-color">\n  <ion-grid>\n    <ion-row>\n      <ion-col class="sign-out-img-div" col-lg-4 col-sm-12 col-md-12 col-xs-12>\n        <ion-img class="sign-out-img" src="assets/imgs/sign-out.png"></ion-img>\n      </ion-col>\n      <ion-col col-lg-8 col-sm-12 col-md-12 col-xs-12 padding-horizontal>\n        <ion-row>\n          <ion-col>\n            <ion-label class="font-x-lg font-wt-500">\n              Thank\'s for visiting!\n            </ion-label>\n            <ion-label text-wrap text-justify>\n              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor insididunt ut labore et dolore magna aliqua.\n              Culpa qui officia deserunt mollit anim id est laborum.\n            </ion-label>\n          </ion-col>\n        </ion-row>\n        <ion-row>          \n          <ion-col>\n            <form [formGroup]="signOutForm">\n              <ion-row>\n                <ion-col>\n                  <h6>Sign out</h6>\n                </ion-col>\n              </ion-row>\n              <ion-row>              \n                <ion-col>\n                  <ion-item>\n                    <select-searchable formControlName="UserList" [(ngModel)]="data.UserList" [items]="users" itemValueField="id" itemTextField="fullName" [canSearch]="true" (onChange)="userSelectChange($event)">\n                      <ng-template selectSearchableLabelTemplate>\n                        Name\n                      </ng-template>\n                    </select-searchable>\n                  </ion-item>                  \n                </ion-col>\n              </ion-row>\n              <ion-row text-center>\n                <ion-col></ion-col>\n              </ion-row>\n              <ion-row text-center>\n                <ion-col>\n                  <button ion-button color="danger" outline round (click)="resetForm();">Reset</button>               \n                  <button ion-button color="secondary" [disabled]="!signOutForm.valid" (click)="onSubmit(signOutForm.value);" type="submit" outline round>Submit</button>\n                </ion-col>\n              </ion-row>\n            </form>\n          </ion-col>\n        </ion-row>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\sign-out\sign-out.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["FormBuilder"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["AlertController"],
@@ -1009,14 +1013,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(355);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(686);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_rest_rest__ = __webpack_require__(687);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_about_us_about_us__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_sign_in_sign_in__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_http_service_http_service__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_http_service_http_service__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_http__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_sign_out_sign_out__ = __webpack_require__(314);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ionic_select_searchable__ = __webpack_require__(688);
@@ -1024,14 +1028,10 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__service_shared_service__ = __webpack_require__(689);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_signaturepad__ = __webpack_require__(690);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular2_signaturepad___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_angular2_signaturepad__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_storage__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_authentication_authentication__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_scanner_scanner__ = __webpack_require__(691);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_barcode_scanner__ = __webpack_require__(692);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_camera__ = __webpack_require__(693);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_android_permissions__ = __webpack_require__(694);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__filters_safePipe__ = __webpack_require__(695);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__filters_safePipe__ = __webpack_require__(691);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1060,11 +1060,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-
-
-var AppModule = (function () {
+var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
@@ -1077,17 +1073,17 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_13__pages_sign_out_sign_out__["a" /* SignOutPage */],
                 __WEBPACK_IMPORTED_MODULE_14__pages_terms_and_conditions_terms_and_conditions__["a" /* TermsAndConditionsPage */],
                 __WEBPACK_IMPORTED_MODULE_20__pages_authentication_authentication__["a" /* AuthenticationPage */],
-                __WEBPACK_IMPORTED_MODULE_25__filters_safePipe__["a" /* SafePipe */]
+                __WEBPACK_IMPORTED_MODULE_21__filters_safePipe__["a" /* SafePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["IonicModule"].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/authentication/authentication.module#AuthenticationPageModule', name: 'AuthenticationPage', segment: 'authentication', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/confirmation-modal/confirmation-modal.module#ConfirmationModalPageModule', name: 'ConfirmationModalPage', segment: 'confirmation-modal', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sign-in/sign-in.module#SignInPageModule', name: 'SignInPage', segment: 'sign-in', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/terms-and-conditions/terms-and-conditions.module#TermsAndConditionsPageModule', name: 'TermsAndConditionsPage', segment: 'terms-and-conditions', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/visitor-pass-modal/visitor-pass-modal.module#VisitorPassModalPageModule', name: 'VisitorPassModalPage', segment: 'visitor-pass-modal', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/visitor-pass-modal/visitor-pass-modal.module#VisitorPassModalPageModule', name: 'VisitorPassModalPage', segment: 'visitor-pass-modal', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/confirmation-modal/confirmation-modal.module#ConfirmationModalPageModule', name: 'ConfirmationModalPage', segment: 'confirmation-modal', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["b" /* HttpClientModule */],
@@ -1113,11 +1109,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_8__providers_rest_rest__["a" /* RestProvider */],
                 __WEBPACK_IMPORTED_MODULE_11__providers_http_service_http_service__["a" /* HttpServiceProvider */],
                 __WEBPACK_IMPORTED_MODULE_16__service_shared_service__["a" /* SharedService */],
-                __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__["a" /* InAppBrowser */],
-                __WEBPACK_IMPORTED_MODULE_21__providers_scanner_scanner__["a" /* ScannerProvider */],
-                __WEBPACK_IMPORTED_MODULE_22__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
-                __WEBPACK_IMPORTED_MODULE_23__ionic_native_camera__["a" /* Camera */],
-                __WEBPACK_IMPORTED_MODULE_24__ionic_native_android_permissions__["a" /* AndroidPermissions */]
+                __WEBPACK_IMPORTED_MODULE_18__ionic_native_in_app_browser__["a" /* InAppBrowser */]
             ]
         })
     ], AppModule);
@@ -1128,14 +1120,14 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 65:
+/***/ 64:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpServiceProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_config_contsants__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_config_contsants__ = __webpack_require__(65);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1154,7 +1146,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-var HttpServiceProvider = (function () {
+var HttpServiceProvider = /** @class */ (function () {
     function HttpServiceProvider(http) {
         this.http = http;
         this._options = { headers: new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }) };
@@ -1181,7 +1173,7 @@ var HttpServiceProvider = (function () {
 
 /***/ }),
 
-/***/ 66:
+/***/ 65:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1209,7 +1201,7 @@ var APIActions = Object.freeze({
 
 /***/ }),
 
-/***/ 67:
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1219,7 +1211,7 @@ var APIActions = Object.freeze({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_us_about_us__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sign_in_sign_in__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sign_out_sign_out__ = __webpack_require__(314);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1248,7 +1240,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * @author: MaheshDe
  * @since: 11/05/2018
  */
-var HomePage = (function () {
+var HomePage = /** @class */ (function () {
     function HomePage(navCtrl, inAppBrowser, storage, domSanitizer, loadingController, toastController) {
         this.navCtrl = navCtrl;
         this.inAppBrowser = inAppBrowser;
@@ -1298,7 +1290,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title text-center>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="item-bg-color">\n\n  <ion-grid fixed>\n\n    <ion-row justify-content-center class="heading">\n\n      <ion-col class="comp-title" col-2>\n\n        <ion-img class="comp-title-img" [src]="companyLogo"></ion-img>\n\n      </ion-col>\n\n      <ion-col class="comp-title-pad" col-10 text-wrap>\n\n        <ion-label class="comp-title-pad-lbl" *ngIf="valuesLoaded">\n\n          Welcome to {{companyName}}: Montreal Facility\n\n        </ion-label>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n            <ion-label text-wrap class="comp-para-lbl">\n\n              <div *ngIf="valuesLoaded" [innerHTML]="companyDescription"></div>\n\n            </ion-label>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right>\n\n            <ion-img width="100" height="25" [src]="poweredByLogo"></ion-img>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n\n            <div class="video-container">\n\n              <iframe width="560" height="415" *ngIf="valuesLoaded" [src]="companyVideo | safe" frameborder="0" allow="autoplay; encrypted-media"\n\n                allowfullscreen></iframe>\n\n            </div>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-col>\n\n      <ion-col class="home-lft-col" col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n\n        <div>\n\n          <ion-grid fixed>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12 class="container-left-panel">\n\n                <ion-card class="about-us-card-bg" (click)="openAboutUsPage()">\n\n                  <ion-card-content text-center>\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/about-us.png" />\n\n                    <ion-label class="font-wt-700">About Us</ion-label>\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n\n                <ion-card class="visitor-entry-card-bg" (click)="openSignInPage()">\n\n                  <ion-card-content text-center>\n\n                    <!-- <ion-thumbnail> -->\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-entry.png" />\n\n                    <ion-label class="font-wt-700">Visitor Sign In</ion-label>\n\n                    <!-- </ion-thumbnail> -->\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n            <ion-row>\n\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n\n                <ion-card class="visitor-exit-card-bg" (click)="signOut()">\n\n                  <ion-card-content text-center>\n\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-exit.png" />\n\n                    <ion-label class="font-wt-700">Visitor Sign Out</ion-label>\n\n                  </ion-card-content>\n\n                </ion-card>\n\n              </ion-col>\n\n            </ion-row>\n\n          </ion-grid>\n\n        </div>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title text-center>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content class="item-bg-color">\n  <ion-grid fixed>\n    <ion-row justify-content-center class="heading">\n      <ion-col class="comp-title" col-2>\n        <ion-img class="comp-title-img" [src]="companyLogo"></ion-img>\n      </ion-col>\n      <ion-col class="comp-title-pad" col-10 text-wrap>\n        <ion-label class="comp-title-pad-lbl" *ngIf="valuesLoaded">\n          Welcome to {{companyName}}: Montreal Facility\n        </ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n        <ion-row>\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n            <ion-label text-wrap class="comp-para-lbl">\n              <div *ngIf="valuesLoaded" [innerHTML]="companyDescription"></div>\n            </ion-label>\n          </ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right>\n            <ion-img width="100" height="25" [src]="poweredByLogo"></ion-img>\n          </ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12>\n            <div class="video-container">\n              <iframe width="560" height="415" *ngIf="valuesLoaded" [src]="companyVideo | safe" frameborder="0" allow="autoplay; encrypted-media"\n                allowfullscreen></iframe>\n            </div>\n          </ion-col>\n        </ion-row>\n      </ion-col>\n      <ion-col class="home-lft-col" col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12>\n        <div>\n          <ion-grid fixed>\n            <ion-row>\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12 class="container-left-panel">\n                <ion-card class="about-us-card-bg" (click)="openAboutUsPage()">\n                  <ion-card-content text-center>\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/about-us.png" />\n                    <ion-label class="font-wt-700">About Us</ion-label>\n                  </ion-card-content>\n                </ion-card>\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n                <ion-card class="visitor-entry-card-bg" (click)="openSignInPage()">\n                  <ion-card-content text-center>\n                    <!-- <ion-thumbnail> -->\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-entry.png" />\n                    <ion-label class="font-wt-700">Visitor Sign In</ion-label>\n                    <!-- </ion-thumbnail> -->\n                  </ion-card-content>\n                </ion-card>\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col offset-lg-2 col-lg-8 offset-md-2 col-md-8 col-sm-12 col-xs-12>\n                <ion-card class="visitor-exit-card-bg" (click)="signOut()">\n                  <ion-card-content text-center>\n                    <img text-center class="home-img" width="25" height="75" src="assets/imgs/visitor-exit.png" />\n                    <ion-label class="font-wt-700">Visitor Sign Out</ion-label>\n                  </ion-card-content>\n                </ion-card>\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\home\home.html"*/
         }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
             name: 'safe'
@@ -1324,6 +1316,8 @@ var HomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1339,12 +1333,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //import { HomePage } from '../pages/home/home';
 
-var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen, events, toastController) {
+
+
+var MyApp = /** @class */ (function () {
+    function MyApp(platform, statusBar, splashScreen, events, toastController, storage) {
         var _this = this;
         this.events = events;
         this.toastController = toastController;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__["a" /* AuthenticationPage */];
+        this.storage = storage;
+        this.rootPage = (this.storage.get('companyConfig')) ? __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */] : __WEBPACK_IMPORTED_MODULE_4__pages_authentication_authentication__["a" /* AuthenticationPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
@@ -1367,12 +1364,12 @@ var MyApp = (function () {
         toast.present();
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Platform"], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Events"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ToastController"]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Platform"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Platform"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Events"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["Events"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ToastController"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ToastController"]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]) === "function" && _f || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=app.component.js.map
@@ -1384,7 +1381,7 @@ var MyApp = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RestProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(135);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
@@ -1409,7 +1406,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-var RestProvider = (function () {
+var RestProvider = /** @class */ (function () {
     function RestProvider(http) {
         this.http = http;
         this.apiUrl = "https://restcountries.eu/rest/v2/all";
@@ -1461,7 +1458,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var SharedService = (function () {
+var SharedService = /** @class */ (function () {
     function SharedService() {
         this.isSubmitDisabled = false;
         this.isSignatureBoxHidden = false;
@@ -1505,46 +1502,6 @@ var SharedService = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScannerProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/*
-  Generated class for the ScannerProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var ScannerProvider = (function () {
-    function ScannerProvider(http) {
-        this.http = http;
-        console.log('Hello ScannerProvider Provider');
-    }
-    ScannerProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], ScannerProvider);
-    return ScannerProvider;
-}());
-
-//# sourceMappingURL=scanner.js.map
-
-/***/ }),
-
-/***/ 695:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SafePipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(28);
@@ -1559,7 +1516,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var SafePipe = (function () {
+var SafePipe = /** @class */ (function () {
     function SafePipe(sanitizer) {
         this.sanitizer = sanitizer;
     }

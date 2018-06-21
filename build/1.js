@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 697:
+/***/ 696:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmationModalPageModule", function() { return ConfirmationModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmation_modal__ = __webpack_require__(701);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__confirmation_modal__ = __webpack_require__(698);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,7 +18,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ConfirmationModalPageModule = (function () {
+var ConfirmationModalPageModule = /** @class */ (function () {
     function ConfirmationModalPageModule() {
     }
     ConfirmationModalPageModule = __decorate([
@@ -38,7 +38,7 @@ var ConfirmationModalPageModule = (function () {
 
 /***/ }),
 
-/***/ 701:
+/***/ 698:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62,7 +62,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ConfirmationModalPage = (function () {
+var ConfirmationModalPage = /** @class */ (function () {
     function ConfirmationModalPage(navCtrl, navParams, viewCtrl, modalCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -95,7 +95,7 @@ var ConfirmationModalPage = (function () {
     };
     ConfirmationModalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-confirmation-modal',template:/*ion-inline-start:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\confirmation-modal\confirmation-modal.html"*/'<!--\n  Generated template for the ConfirmationModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n      <ion-title text-center>{{modalHeader}}</ion-title>\n      <ion-buttons end>\n      <button class="close-btn" ion-button (click)="closeModal()"><ion-icon name="close-circle"></ion-icon></button>\n      </ion-buttons>\n  </ion-navbar>\n </ion-header>\n<ion-content padding class="">\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n        <ion-label text-wrap><strong>{{modalBody}}</strong></ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center padding-top>\n        <button ion-button color="danger"outline round (click)="cancelModal()">Cancel</button>\n        <button ion-button color="secondary" outline round (click)="confirmClick()">Confirm</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"E:\Mahesh\Projects\Personal\Visitor_Module\visitor\ionic-3\src\pages\confirmation-modal\confirmation-modal.html"*/
+            selector: 'page-confirmation-modal',template:/*ion-inline-start:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\confirmation-modal\confirmation-modal.html"*/'<!--\n  Generated template for the ConfirmationModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n      <ion-title text-center>{{modalHeader}}</ion-title>\n      <ion-buttons end>\n      <button class="close-btn" ion-button (click)="closeModal()"><ion-icon name="close-circle"></ion-icon></button>\n      </ion-buttons>\n  </ion-navbar>\n </ion-header>\n<ion-content padding class="">\n  <ion-grid fixed>\n    <ion-row>\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12>\n        <ion-label text-wrap><strong>{{modalBody}}</strong></ion-label>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center padding-top>\n        <button ion-button color="danger"outline round (click)="cancelModal()">Cancel</button>\n        <button ion-button color="secondary" outline round (click)="confirmClick()">Confirm</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"D:\External Work\Smart Food Safe\ionic\Smart Visitor Log\src\pages\confirmation-modal\confirmation-modal.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ViewController"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["ModalController"]])
